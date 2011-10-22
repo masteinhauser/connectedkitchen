@@ -2,8 +2,6 @@ package connectedkitchen.action;
 
 import java.util.Date;
 import java.util.Random;
-import net.sourceforge.stripes.action.ActionBean;
-import net.sourceforge.stripes.action.ActionBeanContext;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -12,21 +10,16 @@ import net.sourceforge.stripes.action.Resolution;
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-public class HomeAction implements ActionBean {
+public class HomeAction extends _Action {
 
-    private ActionBeanContext ctx;
-
-    public ActionBeanContext getContext() {
-        return ctx;
-    }
-
-    public void setContext(ActionBeanContext ctx) {
-        this.ctx = ctx;
-    }
+    private static final String VIEW = "/home.jsp";
     private Date date;
 
     public Date getDate() {
         return date;
+    }
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @DefaultHandler
@@ -42,5 +35,4 @@ public class HomeAction implements ActionBean {
         date = new Date(random);
         return new ForwardResolution(VIEW);
     }
-    private static final String VIEW = "/home.jsp";
 }

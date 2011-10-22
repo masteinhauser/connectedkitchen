@@ -5,4 +5,4 @@
 --%>
 
 <!-- Stripes redirect page to HelloAction.java calling the DefaultHandler method. -->
-<jsp:forward page="/Hello.action"/>
+<jsp:forward page="/Home.action"/>

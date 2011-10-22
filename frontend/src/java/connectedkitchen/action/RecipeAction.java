@@ -1,9 +1,5 @@
 package connectedkitchen.action;
 
-import java.util.Date;
-import java.util.Random;
-import net.sourceforge.stripes.action.ActionBean;
-import net.sourceforge.stripes.action.ActionBeanContext;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -12,21 +8,12 @@ import net.sourceforge.stripes.action.Resolution;
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-public class RecipeAction implements ActionBean {
+public class RecipeAction extends _Action {
 
-    private ActionBeanContext ctx;
     private static final String VIEW = "/recipe.jsp";
-
-    public ActionBeanContext getContext() {
-        return ctx;
-    }
-
-    public void setContext(ActionBeanContext ctx) {
-        this.ctx = ctx;
-    }
     
     @DefaultHandler
-    public Resolution currentDate() {
+    public Resolution view() {
         return new ForwardResolution(VIEW);
     }
 }
