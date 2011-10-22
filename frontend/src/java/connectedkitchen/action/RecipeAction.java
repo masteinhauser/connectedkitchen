@@ -12,9 +12,10 @@ import net.sourceforge.stripes.action.Resolution;
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-public class HomeAction implements ActionBean {
+public class RecipeAction implements ActionBean {
 
     private ActionBeanContext ctx;
+    private static final String VIEW = "/recipe.jsp";
 
     public ActionBeanContext getContext() {
         return ctx;
@@ -23,24 +24,9 @@ public class HomeAction implements ActionBean {
     public void setContext(ActionBeanContext ctx) {
         this.ctx = ctx;
     }
-    private Date date;
-
-    public Date getDate() {
-        return date;
-    }
-
+    
     @DefaultHandler
     public Resolution currentDate() {
-        date = new Date();
         return new ForwardResolution(VIEW);
     }
-
-    public Resolution randomDate() {
-        long max = System.currentTimeMillis();
-        long random = new Random().nextLong() % max;
-
-        date = new Date(random);
-        return new ForwardResolution(VIEW);
-    }
-    private static final String VIEW = "/home.jsp";
 }
