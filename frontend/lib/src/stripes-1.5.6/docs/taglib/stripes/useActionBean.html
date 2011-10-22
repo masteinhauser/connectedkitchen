@@ -1,0 +1,184 @@
+<html xmlns:j2ee="http://java.sun.com/xml/ns/j2ee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>useActionBean
+          (Stripes 1.5.6 Tag Library Documentation)
+        </title>
+<meta name="keywords" content="$title">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="useActionBean (Stripes 1.5.6 Tag Library Documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="useActionBean.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>
+<font size="-1">Stripes Tag Library</font>
+<br>
+            Tag useActionBean</h2>
+<hr>
+            <p>Puts the ActionBean with the specified binding into page context under the
+            supplied name. If the ActionBean does not already exist, it will be instantiated
+            and binding will be run to bind values from the HttpServletRequest onto the
+            ActionBean.  Validation will not be run, and any error messages produced from
+            the binding/type conversion process will be discarded.  The ActionBean will
+            then be placed in request scope, just as done by the DispatcherServlet.</p>
+
+            <p>If the ActionBean did not previously exist, and an event is specified, the event
+            handler will be executed on the ActionBean.  If the ActionBean already existed,
+            supplying the event attribute has no effect.</p>
+
+            <p>Lastly, if the var or id attribute is supplied (they are synonymous and only
+            one should be supplied) the ActionBean is bound in to page context using the name
+            supplied.  This is true in all cases, regardless of whether the ActionBean is newly
+            instantiated, or pre-existing.  This allows the tag to be used to provide an easier
+            name for the ActionBean than referring to it by binding.</p>
+        <br>
+<p></p>
+<hr>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+</tr>
+<tr>
+<td>Tag Class</td><td>net.sourceforge.stripes.tag.UseActionBeanTag</td>
+</tr>
+<tr>
+<td>TagExtraInfo Class</td><td>net.sourceforge.stripes.tag.UseActionBeanTagExtraInfo</td>
+</tr>
+<tr>
+<td>Body Content</td><td>empty</td>
+</tr>
+<tr>
+<td>Display Name</td><td>useActionBean</td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+</tr>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>binding</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                The URL to which the action bean is bound, as specified in the @UrlBinding
+                for the ActionBean in question. Required if 'beanclass' is not specified.
+            </td>
+</tr>
+<tr valign="top">
+<td>beanclass</td><td>false</td><td>true</td><td><code>java.lang.Object</code></td><td>
+                Either the fully qualified name or a Class object representing an ActionBean
+                class. Can be used as an alternative to 'binding' to identify the type of
+                ActionBean that should be resolved and/or instantiated.
+            </td>
+</tr>
+<tr valign="top">
+<td>event</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                The (optional) name of an event to execute. If no event is provided, the
+                ActionBean is instantiated and bound, but no event is executed. To execute the
+                default event handler you must give it a name in the ActionBean and name it here.
+            </td>
+</tr>
+<tr valign="top">
+<td>validate</td><td>false</td><td>true</td><td><code>boolean</code></td><td>
+                Determines whether validation is run on this ActionBean. False by default.
+            </td>
+</tr>
+<tr valign="top">
+<td>alwaysExecuteEvent</td><td>false</td><td>true</td><td><code>boolean</code></td><td>
+                Determines if the event handler method will be run in the case that the
+                ActionBean is already present when the useActionBean is executed. By
+                default Stripes does not execute the event handler method if the bean
+                is not instantiated by the tag.
+            </td>
+</tr>
+<tr valign="top">
+<td>executeResolution</td><td>false</td><td>true</td><td><code>boolean</code></td><td>
+                Determines if the Resolution should be executed if the ActionBean or an
+                interceptor returns one. False by default.
+            </td>
+</tr>
+<tr valign="top">
+<td>var</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                The (optional) name of an attribute to bind the bean to in page context.
+            </td>
+</tr>
+<tr valign="top">
+<td>id</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                Synonym for var.
+            </td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Variables</b></font></td>
+</tr>
+<td colspan="2"><i>No Variables Defined.</i></td>
+</table>
+<br>
+<p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="useActionBean.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Output Generated by 
+            <a href="http://taglibrarydoc.dev.java.net/" target="_blank">Tag Library Documentation Generator</a>.
+            Java, JSP, and JavaServer Pages are trademarks or 
+            registered trademarks of Sun Microsystems, Inc. in the US and other
+            countries.  Copyright 2002-4 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved. 
+            </i></small>
+</body>
+</html>

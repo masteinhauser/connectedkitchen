@@ -1,0 +1,259 @@
+<html xmlns:j2ee="http://java.sun.com/xml/ns/j2ee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>checkbox
+          (Stripes 1.5.6 Tag Library Documentation)
+        </title>
+<meta name="keywords" content="$title">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="checkbox (Stripes 1.5.6 Tag Library Documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="checkbox.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>
+<font size="-1">Stripes Tag Library</font>
+<br>
+            Tag checkbox</h2>
+<hr>
+            <p>Implements an HTML tag that generates form fields of type &lt;input type=&quot;
+            checkbox&quot;/&gt;.
+            Since a single checkbox widget on a HTML page can have only a single value, the value tag
+            attribute must always resolve to a scalar value which will be converted to a String using
+            the Stripes Formatting system, or by caling toString() if an appropriate Formatter is
+            not found.</p>
+
+            <p>Checkboxes are commonly used in two ways.  The first and simplest case uses a single
+            checkbox to set a boolean or Boolean value on the ActionBean.  To do this use the
+            following syntax:</p>
+
+            <pre>&lt;stripes:checkbox name="likesChocolate"/&gt;</pre>
+
+            <p>When the <tt>value</tt> attribute is omitted, as above, the checkbox defaults to
+            the simple behaviour of sending "true" to the server when checked and nothing to the
+            server when unchecked.  For this reason it is best to use <tt>boolean</tt> values,
+            or <tt>Boolean</tt> values initialized to Boolean.FALSE.</p>
+
+            <p>The other common usage is to use checkboxes in a manner similar to a multi-select.
+            For example:</p>
+
+<pre>
+&lt;stripes:checkbox name="likes" value="chocolate"/&gt;
+&lt;stripes:checkbox name="likes" value="marshmallows"/&gt;
+&lt;stripes:checkbox name="likes" value="ice cream"/&gt;
+</pre>
+
+            <p>In this case there are multiple checkboxes each with the same name, but different
+            values.  A value is submitted to the server for each checked checkbox, and normally
+            bound to an array or List property on the ActionBean.</p>
+
+            <p>Checkboxes perform automatic (re-)population of state.  They prefer, in order, values
+            in the HttpServletRequest, values in the ActionBean and lastly values set using
+            checked=&quot;&quot; on the page. The &quot;checked&quot; attribute is a complex
+            attribute and may be a Collection, an Array or a scalar Java Object.  In the first
+            two cases a check is performed to see if the value in the value=&quot;foo&quot;
+            attribute is one of the elements in the checked collection or array.  In the last case,
+            the value is matched directly against the String form of the checked attribute.
+            If in any case a checkbox's value matches then a checked=&quot;checked&quot;
+            attribute will be added to the HTML written.</p>
+
+            <p>The tag may include a body and if present the body is converted to a String and
+            overrides the <b>checked</b> tag attribute.</p>
+        <br>
+<p></p>
+<hr>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+</tr>
+<tr>
+<td>Tag Class</td><td>net.sourceforge.stripes.tag.InputCheckBoxTag</td>
+</tr>
+<tr>
+<td>TagExtraInfo Class</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Body Content</td><td>JSP</td>
+</tr>
+<tr>
+<td>Display Name</td><td>checkbox</td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+</tr>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>checked</td><td>false</td><td>true</td><td><code>java.lang.Object</code></td><td>
+                References either a scalar object/String or an Array or a Collection. If the value
+                of the checkbox is found to equal or be contained by the 'checked' object then the
+                checkbox will default to rendering as checked.
+            </td>
+</tr>
+<tr valign="top">
+<td>formatType</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>The type used to format the object. If the value is a date, valid values are 'date', 'time' and 'datetime'. If the value is a Number, valid values are 'number', 'percentage' and 'currency'.</td>
+</tr>
+<tr valign="top">
+<td>formatPattern</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>The pattern to apply. Can be either a named pattern or an actual pattern as understood by java.text.DateFormat or java.text.NumberFormat as appropriate for the type of object being formatted.</td>
+</tr>
+<tr valign="top">
+<td>value</td><td>false</td><td>true</td><td><code>java.lang.Object</code></td><td>
+                The value that will be submitted to the server if this checkbox is in the checked state
+                when clicked.  If no value is specified, the value defaults to <b>true</b> (or more
+                correctly Boolean.TRUE).  While other inputs like text and password repopulate their
+                state into the value attribute, this is not the case with checkbox, where the value
+                is an invariant.
+            </td>
+</tr>
+<tr valign="top">
+<td>name</td><td>true</td><td>true</td><td><code>java.lang.String</code></td><td>The name of the form field.</td>
+</tr>
+<tr valign="top">
+<td>size</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>The size of the form field. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>disabled</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Disables the input element when it first loads so that the user can not write text in it, or select it. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>accesskey</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Keyboard shortcut to access the element. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>class</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>The CSS class to be applied to the element. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>dir</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Text direction. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>id</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>A unique identifier for the HTML tag on the page. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>lang</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>The language code of the element. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onblur</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when the element loses focus. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onchange</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when the element changes. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onclick</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run on each mouse click. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>ondblclick</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run on a double-click of the mouse. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onfocus</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when the element acquires focus. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onkeydown</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when a key is depressed. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onkeypress</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when a key is pressed and released. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onkeyup</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when a key is released. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onmousedown</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when a mouse button is depressed. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onmousemove</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when the mouse pointer is moved. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onmouseout</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when the mouse pointer moves out of the element. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onmouseover</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when the mouse pointer moves over the element. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onmouseup</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when a mouse button is released. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onselect</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when an element is selected. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>style</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Inline CSS style fragment that applies to the element (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>tabindex</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>The tab order of the element. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>title</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Tool-tip text for the element. (HTML Pass-through)</td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Variables</b></font></td>
+</tr>
+<td colspan="2"><i>No Variables Defined.</i></td>
+</table>
+<br>
+<p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="checkbox.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Output Generated by 
+            <a href="http://taglibrarydoc.dev.java.net/" target="_blank">Tag Library Documentation Generator</a>.
+            Java, JSP, and JavaServer Pages are trademarks or 
+            registered trademarks of Sun Microsystems, Inc. in the US and other
+            countries.  Copyright 2002-4 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved. 
+            </i></small>
+</body>
+</html>

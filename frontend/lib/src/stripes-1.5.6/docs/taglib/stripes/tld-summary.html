@@ -1,0 +1,850 @@
+<html xmlns:j2ee="http://java.sun.com/xml/ns/j2ee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Stripes Tag Library
+          (Stripes 1.5.6 Tag Library Documentation)
+        </title>
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="styie">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="Stripes Tag Library (Stripes 1.5.6 Tag Library Documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>Stripes Tag Library</h2>
+<hr>
+<b>Standard Syntax:</b>
+<br>
+<code>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                
+                    &lt;%@ taglib prefix="stripes" uri="http://stripes.sourceforge.net/stripes.tld" %&gt;<br>
+</code>
+<br>
+<b>XML Syntax:</b>
+<br>
+<code>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                
+                    &lt;anyxmlelement xmlns:stripes="http://stripes.sourceforge.net/stripes.tld" /&gt;<br>
+</code>
+<hr>
+<pre>
+        Provides tags for use with the Stripes presentation framework.  There are three main
+        groups of tags in this tag library.  First come the HTML form tags.  These include
+        the form tag itself as well as tags for most of the input tag variants.  The second
+        is a set of tags for output error information, including 'errors', 'individual-error'
+        and others.  Last is a set of utility tags.  These include the wizard-fields tag which
+        can write out hidden fields for values in the request, the useActionBean tag to use
+        ActionBeans as view helpers and the link tags for generating links similar to forms.
+    </pre>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Library Information</b></font></td>
+</tr>
+<tr>
+<td>Display Name</td><td>Stripes Tag Library</td>
+</tr>
+<tr>
+<td>Version</td><td>1.0</td>
+</tr>
+<tr>
+<td>Short Name</td><td>stripes</td>
+</tr>
+<tr>
+<td>URI</td><td>http://stripes.sourceforge.net/stripes.tld</td>
+</tr>
+</table>
+            &nbsp;
+            <p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Summary</b></font></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="button.html">button</a></b></td><td>
+            <p>Tag that generates HTML form fields of type
+            &lt;input type=&quot;button&quot; ... /&gt; which render buttons for submitting forms.
+            The only capability offered above and beyond a pure html tag is the ability to lookup
+            the value of the button (i.e. the text on the button that the user sees) from a
+            localized resource bundle.</p>
+
+            <p>The tag will set its value using the first non-null result from the following list:</p>
+            <ul>
+              <li>resource: <code>{actionFQN}.{buttonName}</code></li>
+              <li>resource: <code>{actionPath}.{buttonName}</code> (deprecated)</li>
+              <li>resource: <code>{buttonName}</code></li>
+              <li>the body of the tag</li>
+              <li>the value attribute of the tag</li>
+            </ul>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="checkbox.html">checkbox</a></b></td><td>
+            <p>Implements an HTML tag that generates form fields of type &lt;input type=&quot;
+            checkbox&quot;/&gt;.
+            Since a single checkbox widget on a HTML page can have only a single value, the value tag
+            attribute must always resolve to a scalar value which will be converted to a String using
+            the Stripes Formatting system, or by caling toString() if an appropriate Formatter is
+            not found.</p>
+
+            <p>Checkboxes are commonly used in two ways.  The first and simplest case uses a single
+            checkbox to set a boolean or Boolean value on the ActionBean.  To do this use the
+            following syntax:</p>
+
+            <pre>&lt;stripes:checkbox name="likesChocolate"/&gt;</pre>
+
+            <p>When the <tt>value</tt> attribute is omitted, as above, the checkbox defaults to
+            the simple behaviour of sending "true" to the server when checked and nothing to the
+            server when unchecked.  For this reason it is best to use <tt>boolean</tt> values,
+            or <tt>Boolean</tt> values initialized to Boolean.FALSE.</p>
+
+            <p>The other common usage is to use checkboxes in a manner similar to a multi-select.
+            For example:</p>
+
+<pre>
+&lt;stripes:checkbox name="likes" value="chocolate"/&gt;
+&lt;stripes:checkbox name="likes" value="marshmallows"/&gt;
+&lt;stripes:checkbox name="likes" value="ice cream"/&gt;
+</pre>
+
+            <p>In this case there are multiple checkboxes each with the same name, but different
+            values.  A value is submitted to the server for each checked checkbox, and normally
+            bound to an array or List property on the ActionBean.</p>
+
+            <p>Checkboxes perform automatic (re-)population of state.  They prefer, in order, values
+            in the HttpServletRequest, values in the ActionBean and lastly values set using
+            checked=&quot;&quot; on the page. The &quot;checked&quot; attribute is a complex
+            attribute and may be a Collection, an Array or a scalar Java Object.  In the first
+            two cases a check is performed to see if the value in the value=&quot;foo&quot;
+            attribute is one of the elements in the checked collection or array.  In the last case,
+            the value is matched directly against the String form of the checked attribute.
+            If in any case a checkbox's value matches then a checked=&quot;checked&quot;
+            attribute will be added to the HTML written.</p>
+
+            <p>The tag may include a body and if present the body is converted to a String and
+            overrides the <b>checked</b> tag attribute.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="errors.html">errors</a></b></td><td>
+            <p>The errors tag has two modes, one where it displays all validation errors in a list
+            and a second mode when there is a single enclosed field-error tag that has no name attribute
+            in which case this tag iterates over the body, displaying each error in turn in place
+            of the field-error tag.</p>
+
+            <p>In the first mode, where the default output is used, it is possible to change the output
+            for the entire application using a set of resources in the error messages bundle
+            (StripesResources.properties unless you have configured another).  If the properties are
+            undefined, the tag will output the text "Validation Errors" in a div with css class errorHeader,
+            then output an unordered list of error messages.  The following four resource strings
+            (shown with their default values) can be modified to create different default ouput:</p>
+
+            <ul>
+              <li>stripes.errors.header=&lt;div class="errorHeader"&gt;Validation Errors&lt;/div&gt;&lt;ul&gt;</li>
+              <li>stripes.errors.footer=&lt;/ul&gt;</li>
+              <li>stripes.errors.beforeError=&lt;li&gt;</li>
+              <li>stripes.errors.afterError=&lt;/li&gt;</li>
+            </ul>
+
+            <p>The second mode allows customization of the output for a specific page by nesting
+            the following tag inside the errors tag: &lt;stripes:individual-error&gt;,
+            &lt;stripes:error-header&gt; and &lt;stripes:error-footer&gt;. An example, re-creating
+            the default output using this technique follows:</p>
+
+<pre>&lt;stripes:errors&gt;
+     &lt;stripes:errors-header&gt;&lt;div class=&quot;errorHeader&quot;&gt;Validation Errors&lt;/div&gt;&lt;ul&gt;&lt;/stripes:errors-header&gt;
+     &lt;li&gt;&lt;stripes:individual-error/&gt;&lt;/li&gt;
+     &lt;stripes:errors-footer&gt;&lt;/ul&gt;&lt;/stripes:errors-footer&gt;
+&lt;/stripes:errors&gt;
+</pre>
+
+            <p>The errors tag can be used to display errors for a single field by supplying it
+            with a 'field' attribute which matches the name of a field on the page. In this case the tag
+            will display only if errors exist for the named field.  In this mode the tag will first look for
+            resources named:</p>
+
+            <ul>
+              <li>stripes.fieldErrors.header</li>
+              <li>stripes.fieldErrors.footer</li>
+              <li>stripes.fieldErrors.beforeError</li>
+              <li>stripes.fieldErrors.afterError</li>
+            </ul>
+
+            <p>If the <tt>fieldErrors</tt> resources cannot be found, the tag will default to using the
+            sames resources and defaults as when displaying for all fields.</p>
+
+            <p>Similar to the above, field specific, manner of display the errors tag can also be used
+            to output only errors not associated with a field, i.e. global errors.  This is done by setting
+            the <tt>globalErrorsOnly</tt> attribute to true.</p>
+
+            <p>This tag has several ways of being attached to the errors of a specific action request.
+            If the tag is inside a form tag, it will display only errors that are associated
+            with that form. If supplied with an 'action' attribute, it will display errors only errors
+            associated with a request to that URL. Finally, if neither is the case, it will display
+            errors associated with the action bean for the current request.</p>
+
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="errors-footer.html">errors-footer</a></b></td><td>
+            Tag contents are displayed only when showing the last row of an errors tag.
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="errors-header.html">errors-header</a></b></td><td>
+            Tag contents are displayed only when showing the first row of an errors tag.
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="file.html">file</a></b></td><td>
+            <p>Tag that generates HTML form fields of type &lt;input type=&quot;file&quot ... /&gt;.
+            The only functionality provided above and beyond a straight HTML input tag is that the
+            tag will find its enclosing form tag and ensure that the for is set to POST instead of
+            GET, and that the encoding type of the form is properly set to multipart/form-data as
+            both these settings are necessary to correctly perform file uploads.</p>
+
+            <p>Does not perform repopulation because default values for
+            &lt;input type=&quot;file&quot;/&gt; are not allowed by the HTML specification.  One
+            can only imagine this is because a malicous page author could steal a user's files by
+            defaulting the value and using JavaScript to auto-submit forms!  As a result the tag
+            does not accept a body because it would have no use for any generated content.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="form.html">form</a></b></td><td>
+            Stripes' HTML form tag. Provides a standard HTML form tag interface, but allows
+            other stripes input tags to re-populate their values.  Also includes a hidden field in
+            the form for the page name that the form is being rendered on (to allow forwarding to
+            the same page in the case of a validation error.
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="hidden.html">hidden</a></b></td><td>
+            <p>Generates one or more &lt;input type=&quot;hidden&quot; ... /&gt; HTML tags based on
+            the value supplied. The hidden tag assigns the value attribute by scanning in the
+            following order:
+            <ul>
+              <li>for one or more values with the same name in the HttpServletRequest</li>
+              <li>for a field on the ActionBean with the same name (if a bean instance is present)</li>
+              <li>by collapsing the body content to a String, if a body is present</li>
+              <li>referring to the result of the EL expression contained in the value attribute of the tag.</li>
+            </ul>
+            </p>
+
+            <p>The result of this scan can produce either a Collection, an Array or any other
+            Object. In the first two cases the tag will output an HTML hidden form field tag for
+            each value in the Collection or Array.  In all other cases the Object is toString()'d
+            (unless it is null) and a single hidden field will be written.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="image.html">image</a></b></td><td>
+           <p>Tag that generates an image input button for use in HTML forms, e.g:</p>
+
+           <pre>&lt;input name="foo" type="image" src="/app/foo.gif" alt="foo"/&gt;</pre>
+
+           <p>Provides a couple of facilities above and beyond using the plain HTML tag. The main
+           advantage is a localization capability. The tag looks in the Stripes Field Name
+           message bundle for resources to be used as the <tt>src</tt> URL for the image and the
+           <tt>alt</tt> text of the image.  In order it will look for and use:</p>
+
+           <ul>
+             <li>resource: <tt>actionFQN.inputName.[src|alt]</tt></li>
+             <li>resource: <tt>actionPath.inputName.[src|alt]</tt> (deprecated)</li>
+             <li>resource: <tt>inputName.[src|alt]</tt></li>
+             <li>tag attributes: <tt>src</tt> and <tt>alt</tt>
+           </ul>
+
+           <p>If localized values exist these are preferred over the values specified directly
+           on the tag.</p>
+
+           <p>Additionally if the 'src' URL (whether acquired from the tag attribute or the
+           resource bundle) starts with a slash, the tag will prepend the context path of the
+           web application.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="individual-error.html">individual-error</a></b></td><td>
+            Placeholder tag that is to be used only inside of a errors tag.  When nested inside
+            an errors tag, causes the errors tag to operate as an iterator, outputting its body
+            for each error present, placing the text of the error where the individual-error tag
+            is found.
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="label.html">label</a></b></td><td>
+            <p>Label tag that can look up localized field labels and render differently when the
+            labelled field is in error.  While the label field is usually used to generated form
+            field labels, it can be used to generate HTML label tags with arbitrary localized or
+            non-localized values.</p>
+
+            <p>It is important to understand the relationship between the <tt>name</tt> and
+            <tt>for</tt> attributes of the <tt>stripes:label</tt> tag.  The <tt>for</tt> attribute
+            is used directly to generated the <tt>for</tt> attribute of the generated HTML
+            <tt>label</tt> tag, and as such should correspond to the HTML <tt>id</tt> attribute
+            of the input tag for which it is a label.  If the <tt>name</tt> attribute is omitted
+            then the value of the <tt>for</tt> attribute will also be used as the <tt>name</tt>
+            attribute.</p>
+
+            <p>The value of the label is set by searching for a non-null value in the following
+             order:</p>
+
+            <ul>
+                <li>resource: <code>{actionFQN}.{name}</code></li>
+                <li>resource: <code>{actionPath}.{name}</code> (deprecated)</li>
+                <li>resource: <code>{name}</code></li>
+                <li>The body of the label tag</li>
+                <li>A warning message telling you to supply a label value somewhere!</li>
+            </ul>
+
+            <p>In the case of indexed or mapped form fields (e.g. <tt>foo[3].bar</tt>) the
+            indexing and mapping will be removed from the name prior to using it to lookup
+            labels (e.g. <tt>foo.bar</tt>).  This is done to remain consistent with the way
+            field names are looked up for error messages.</p>
+
+            <p>It should be noted that in cases where a form field and HTML control are
+            one-to-one (e.g. text, password, select) the name of the label will usually equal
+            the name of the control.  However, this need not be the case.  You may use any value
+            for the name of the label, <b>but</b> the label will only perform error rendering
+            correctly if the name is equal to the name of the form field being labelled. To
+            illustrate this point consider the following example:</p>
+
+<pre>
+&lt;th&gt;
+    &lt;stripes:label for="bug.status"/&gt;:
+&lt;/th&gt;
+&lt;td&gt;
+    &lt;c:forEach var="status" items="&lt;%=Status.values()%&gt;"&gt;
+        &lt;stripes:radio id="bug.status.${stripes:enumName(status)}"
+                       name="bug.status"
+                       value="${stripes:enumName(status)}"/&gt;
+        &lt;stripes:label for="bug.status.${stripes:enumName(status)}"&gt;
+            ${stripes:enumName(status)}
+        &lt;/stripes:label&gt;
+    &lt;/c:forEach&gt;
+&lt;/td&gt;
+</pre>
+
+        <p>The above example uses one label tag at the top (with <tt>for="bug.status"</tt>) that
+        labels a row in the table and will display differently when the <tt>bug.status</tt> field
+        is in error.  It then employs a label tag for each radio button.  These are bound to the
+        individual radio buttons (clicking on the label will select the appropriate radio button),
+        and default to the name of the enum value if a localized name isn't found.  Since these
+        labels do not match the field name exactly, they will not render differently when the
+        field is in error.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="link.html">link</a></b></td><td>
+            <p>Tag that generates HTML links, used for linking to pages and ActionBean events
+            within a Stripes application. Works in concert with zero or more nested param tags
+            in order to allow addition of arbitrary parameters to any URL. The body of the tag,
+            minus any param tags, is trimmed for whitespace at either end, and is then used
+            as the contents of the link body.</p>
+
+            <p>There are two attributes which are not a mirrors of attributes on the HTML anchor
+            tag. The first is the 'event' attribute. This allows specification of a specific event
+             to trigger when linking to an ActionBean URL. The second is 'beanclass' which allows
+             the specification of the class name or Class instance for an ActionBean as an
+             alternative to specifying the 'href' attribute.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="messages.html">messages</a></b></td><td>
+            <p>Displays a list of non-error messages to the user. The list of messages can come from
+            either the request (preferred) or the session (checked 2nd).  Lists of messages can be stored
+            under any arbitrary key in request or session and the key can be specified to the messages
+            tag.  If no key is specified then the default key (and therefore default set of messages) is
+            used. Note that by default the ActionBeanContext stores messages in a flash scope which
+            causes them to be exposed as request attributes in both the current and subsequent requests
+            (assuming a redirect is used).</p>
+
+            <p>While similar in concept to the ErrorsTag, the MessagesTag is significantly simpler. It deals
+            with a List of Message objects, and does not understand any association between messages and
+            form fields, or even between messages and forms.  It is designed to be used to show arbitrary
+            messages to the user, the prime example being a confirmation message displayed on the subsequent
+            page following an action.</p>
+
+            <p>The messages tag outputs a header before the messages, the messages themselves, and a footer
+            after the messages.  Default values are set for each of these four items.  Different values
+            can be specified in the error messages resource bundle (StripesResources.properties unless you
+            have configured another). The default configuration would look like this:
+
+            <ul>
+              <li>stripes.messages.header=&lt;ul class="messages"&gt;</li>
+              <li>stripes.messages.footer=&lt;/ul&gt;</li>
+              <li>stripes.messages.beforeMessage=&lt;li&gt;</li>
+              <li>stripes.messages.afterMessage=&lt;/li&gt;</li>
+            </ul>
+
+            <p>It should also be noted that while the errors tag supports custom headers and footers
+            through the use of nested tags, the messages tag does not support this. In fact the
+            messages tag does not support body content at all - it will simply be ignored.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="option.html">option</a></b></td><td>
+            <p>Generates an &lt;option value=&quot;foo&quot;&gt;Fooey&lt;/option&gt; HTML tag.
+            Coordinates with an enclosing select tag to determine its state (i.e. whether or not
+            it is selected.)  As a result some of the logic regarding state repopulation is a bit
+            complex.</p>
+
+            <p>Since options can have only a single value per option the value attribute of the tag
+            must be a scalar, which will be converted into a String using a Formatter if an
+            appropriate one can be found, otherwise the toString() method will be invoked.The
+            presence of a &quot;selected&quot; attribute is used as an indication that this option
+            believes it should be selected by default - the value (as opposed to the presence)
+            of the selected attribute is never used....</p>
+
+            <p>The option tag delegates to its enclosing select tag to determine whether or not it
+            should be selected.  See the stripes:select for documentation on how it determines
+            selection status.  If the select tag <em>has no opinion</em> on selection state
+            (note that this is not the same as select tag deeming the option should not be selected)
+            then the presence of the selected attribute (or lack thereof) is used to turn selection
+            on or off.</p>
+
+            <p>If the option has a body then the String value of that body will be used to generate
+            the body of the generated HTML option.  If the body is empty or not present then the
+            label attribute will be written into the body of the tag.</p>
+
+            <p>If the label attribute's value is used, it will be HTML-encoded before being written
+            out. However, the tag body, if present, will <em>not</em> be HTML-encoded. This allows
+            the explicit use of HTML character entities within the tag, which would be impossible
+            otherwise. If you choose to set the tag body and you want the output to be HTML-encoded,
+            you must use something like the escapeXml attribute of the &lt;c:out&gt; tag to
+            HTML-encode the value before passing it to &lt;stripes:option&gt;.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="options-collection.html">options-collection</a></b></td><td>
+            <p>Writes a set of &lt;option value=&quot;foo&quot;&gt;bar&lt;/option&gt; tags to the
+            page based on the contents of a Collection, Iterable or Array. Each element in the collection is
+            represented by a single option tag on the page.  Uses the label and value attributes
+            on the tag to name the properties of the objects in the Collection that should be used
+            to generate the body of the HTML option tag and the value attribute of the HTML option
+            tag respectively.  If either (or both) of the label or value properties are ommitted
+            the item itself will be used for the label/value instead - this is done to support
+            collections of simple types like Strings and Numbers.</p>
+
+            <p>E.g. a tag declaration that looks like:</p>
+            <pre>&lt;stripes:options-collection collection=&quot;${cats}&quot; value=&quot;catId&quot; label=&quot;name&quot;/&gt;</pre>
+
+            <p>would cause the container to look for a Collection called &quot;cats&quot; across
+            the various JSP scopes and set it on the tag.  The tag would then proceed to iterate
+            through that collection calling getCatId() and getName() on each cat to produce
+            HTML option tags.</p>
+
+            <p>The tag will attempt to localize the labels attributes of the option tags that are
+            generated. To do this it will look up labels in the field resource bundle using:</p>
+
+            <ul>
+              <li>{className}.{labelPropertyValue}</li>
+              <li>{packageName}.{className}.{labelPropertyValue}</li>
+              <li>{className}.{valuePropertyValue}</li>
+              <li>{packageName}.{className}.{valuePropertyValue}</li>
+            </ul>
+
+            <p>For example for a class com.myco.Gender supplied to the options-collection tag with
+            label="description" and value="key", when rendering for an instance
+            Gender[key="M", description="Male"] the following localized properites will be looked for:
+
+            <ul>
+              <li>Gender.Male</li>
+              <li>com.myco.Gender.Male</li>
+              <li>Gender.M</li>
+              <li>com.myco.Gender.M</li>
+            </ul>
+
+            <p>If no localized label can be found then the value of the label property will be used.</p>
+
+            <p>Optionally, the group attribute may be used to generate &lt;optgroup&gt; tags. The value of
+            this attribute is used to retrieve the corresponding property on each object of the collection.
+            A new optgroup will be created each time the value changes.
+            </p>
+
+            <p>The rendered group may be localized by specifying one of the following properties:</p>
+
+            <ul>
+              <li>{className}.{groupPropertyValue}</li>
+              <li>{packageName}.{className}.{groupPropertyValue}</li>
+            </ul>
+
+            <p>All other attributes on the tag (other than collection, value, label and group) are passed directly
+            directly through to the stripes:option tag which is used to generate the individual
+            HTML options tags. As a result the stripes:options-collection will exhibit the
+            same re-population/selection behaviour as the regular options tag.</p>
+
+            <p>Since the tag has no use for one it does not allow a body.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="options-map.html">options-map</a></b></td><td>
+            <p>Writes a set of &lt;option value=&quot;foo&quot;&gt;bar&lt;/option&gt; tags to the
+            page based on the contents of a Map. Each Map.Entry in the Map is represented by a single
+            option tag on the page.  Uses the label and value attributes on the tag to name the
+            properties of the objects in the Map.Entry that should be used to generate the body of the
+            HTML option tag and the value attribute of the HTML option tag respectively.  If either
+            (or both) of the label or value properties are ommitted the Map.Entry value or key will
+            be used respectively.</p>
+
+            <p>E.g. a tag declaration that looks like:</p>
+            <pre>&lt;stripes:options-map map=&quot;${cats}&quot;/&gt;</pre>
+
+            <p>would cause the container to look for a Map called &quot;cats&quot; across
+            the various JSP scopes and set it on the tag.  The tag would then proceed to iterate
+            through that Map calling getKey() and getValue() on each cat to produce HTML option tags.</p>
+
+            <p>The tag will attempt to localize the labels attributes of the option tags that are
+            generated. To do this it will look up labels in the field resource bundle. If no
+            localized label can be found then the value of the label property will be used.</p>
+
+            <p>All other attributes on the tag (other than map, label, and sort) are passed
+            directly through to the stripes:option tag which is used to generate the individual
+            HTML options tags. As a result the stripes:options-map will exhibit the
+            same re-population/selection behaviour as the regular options tag.</p>
+
+            <p>Since the tag has no use for one it does not allow a body.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="options-enumeration.html">options-enumeration</a></b></td><td>
+            <p>Writes a set of &lt;option value="foo"&gt;bar&lt;/option&gt; tags to the page based on the
+            values of a enum.  Each value in the enum is represented by a single option tag on the page. The
+            options will be generated in ordinal value order (i.e. the order they are declared in the
+            enum).</p>
+
+            <p>The label (the value the user sees) is generated in one of three ways: by looking up a
+            localized value, by using the property named by the 'label' tag attribute if it is supplied
+            and lastly by toString()'ing the enumeration value.  For example the following tag:</p>
+
+            <pre>&lt;stripes:options-enumeration enum="net.kitty.EyeColor" label="description"/&gt;</pre>
+
+            when generating the option for the value <tt>EyeColor.BLUE</tt> will look for a label in the
+            following order:</p>
+
+            <ul>
+              <li><tt>resource: EyeColor.BLUE</tt></li>
+              <li><tt>resource: net.kitty.EyeColor.BLUE</tt></li>
+              <li><tt>property: EyeColor.BLUE.getDescription()</tt> (because of the label="description" above)</li>
+              <li><tt>failsafe: EyeColor.BLUE.toString()</tt></li>
+            </ul>
+
+            <p>If the class specified does not exist, or does not specify a Java 1.5 enum then a
+            JspException will be raised.</p>
+
+            <p>All attributes of the tag, other than enum and label, are passed directly through to
+            the <tt>&lt;stripes:option/&gt;</tt> which is used to generate the individual HTML
+            options tags. As a result the <tt>&lt;stripes:options-enumeration/&gt;</tt> will exhibit
+            the same re-population/selection behaviour as the regular options tag.</p>
+
+            <p>Since the tag has no use for one it does not allow a body.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="param.html">param</a></b></td><td>
+            Used to add parameters to the link and url tags. If the value attribute is present it
+            will be used. If the value attribute is not present, then the body of the tag will be
+            used as the parameter value.  The value attribute may identify either a scalar value,
+             an Array or a Collection.  In the latter two cases a URL parameter will be added per
+             value in the Array or Collection.
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="password.html">password</a></b></td><td>
+            <p>Tag that generates HTML form fields of type
+            &lt;input type=&quot;password&quot; name=&quot;foo&quot; value=&quot;bar&quot;/&gt;,
+            which can optionally re-populate their value, and provide error display/formatting
+            consistent with the rest of the Stripes input tags. Password tags may have only a single
+            value, whose default may be set using either the body of the tag, or using the
+            value=&quot;&quot; attribute of the tag. At runtime the contents of the text field are
+            determined by looking first for a non-null body and if one is not found, then a
+            non-null value attribute.</p>
+
+            <p>Repopulation of values for password tags is optional, and by default is <b>not</b>
+            performed. To control this behaviour explicitly use the <tt>repopluate</tt> tag
+            attribute.</p>
+
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="radio.html">radio</a></b></td><td>
+            <p>Generates &lt;input type=&quot;radio&quot; value=&quot;foo&quot;/&gt; HTML tags
+            based on the attribute set on the tag and the state of the form. Since a single radio
+            button widget on a HTML page can have only a single value, the value tag attribute must
+            be a Scalar object.  The value will be converted to a String using the Stripes
+            formatting system (with appropriate defaults), or by calling toString if an appropriate
+            Formatter does not exist. Similarly since radio button sets can have only a single
+            selected value at a time the checked attribute of the tag must also be a scalar value.</p>
+
+            <p>Radio buttons perform automatic (re-)population of state.  They prefer, in order, the value
+            in the HttpServletRequest, the value in the ActionBean and lastly the value set using
+            checked="" on the page.  If the value of the current radio button matches the checked value
+            from the preferred source then the attribute checked="checked" will be written in the HTML
+            tag.</p>
+
+            <p>The tag may include a body and if present the body is converted to a String and overrides the
+            <b>checked</b> tag attribute.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="reset.html">reset</a></b></td><td>
+            <p>Tag that generates HTML form fields of type
+            &lt;input type=&quot;reset&quot; ... /&gt; which render buttons for resetting forms.
+            The only capability offered above and beyond a pure html tag is the ability to lookup
+            the value of the button (i.e. the text on the button that the user sees) from a
+            localized resource bundle.</p>
+
+            <p>The tag will set its value using the first non-null result from the following list:</p>
+            <ul>
+              <li>resource: <code>{actionFQN}.{buttonName}</code></li>
+              <li>resource: <code>{actionPath}.{buttonName}</code> (deprecated)</li>
+              <li>resource: <code>{buttonName}</code></li>
+              <li>the body of the tag</li>
+              <li>the value attribute of the tag</li>
+            </ul>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="select.html">select</a></b></td><td>
+            <p>Coordinates with one or more other tags to produce a well formed HTML select tag
+            with state repopulation. The select tag itself really only writes out the basic
+            &lt;select&gt; name=&quot;foo&quot;&gt; ... &lt;/select&gt; piece of the structure,
+            and provides mechanisms for child options to determine whether or not they should
+            render themselves as selected.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="submit.html">submit</a></b></td><td>
+            <p>Tag that generates HTML form fields of type
+            &lt;input type=&quot;submit&quot; ... /&gt; which render buttons for submitting forms.
+            The only capability offered above and beyond a pure html tag is the ability to lookup
+            the value of the button (i.e. the text on the button that the user sees) from a
+            localized resource bundle.</p>
+
+            <p>The tag will set its value using the first non-null result from the following list:</p>
+            <ul>
+              <li>resource: <code>{actionFQN}.{buttonName}</code></li>
+              <li>resource: <code>{actionPath}.{buttonName}</code> (deprecated)</li>
+              <li>resource: <code>{buttonName}</code></li>
+              <li>the body of the tag</li>
+              <li>the value attribute of the tag</li>
+            </ul>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="text.html">text</a></b></td><td>
+            <p>Tag that generates HTML form fields of type
+            &lt;input type=&quot;text&quot; name=&quot;foo&quot; value=&quot;bar&quot;/&gt;, which can
+            dynamically re-populate their value. Text tags may have only a single value, whose
+            default may be set using either the body of the tag, or using the value=&quot;&quot;
+            attribute of the tag. At runtime the contents of the text field are determined by
+            looking for the first non-null value in the following list:</p>
+
+            <ul>
+              <li>A value with the same name in the HttpServletRequest</li>
+              <li>A value on the ActionBean if an ActionBean instance is present</li>
+              <li>The contents of the body of the tag</li>
+              <li>The value attribute of the tag</li>
+            </ul>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="textarea.html">textarea</a></b></td><td>
+            <p>Tag that generates HTML form fields of type
+            &lt;textarea name=&quot;foo&quot;&gt; ... &lt;/textarea&gt;, which can dynamically
+            re-populate their value. Textareas may have only a single value, whose default may be
+            set using either the body of the textarea, or using the value=&quot;&quot; attribute
+            of the tag. At runtime the contents of the textarea are determined by looking for the
+            first non-null value in the following list:</p>
+
+            <ul>
+              <li>A value with the same name in the HttpServletRequest</li>
+              <li>A value on the ActionBean if an ActionBean instance is present</li>
+              <li>The contents of the body of the textarea</li>
+              <li>The value attribute of the tag</li>
+            </ul>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="url.html">url</a></b></td><td>
+            Similar to the link tag except that the behaviour closely approximates the JSTL
+            c:url tag. Generates a URL containing the necessary source-page and event
+            parameters. If a 'var' attribute is specified, the generated URL will be written
+            to that variable, otherwise it will be written into the page. Like c:url the
+            constructed url is not encoded.
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="useActionBean.html">useActionBean</a></b></td><td>
+            <p>Puts the ActionBean with the specified binding into page context under the
+            supplied name. If the ActionBean does not already exist, it will be instantiated
+            and binding will be run to bind values from the HttpServletRequest onto the
+            ActionBean.  Validation will not be run, and any error messages produced from
+            the binding/type conversion process will be discarded.  The ActionBean will
+            then be placed in request scope, just as done by the DispatcherServlet.</p>
+
+            <p>If the ActionBean did not previously exist, and an event is specified, the event
+            handler will be executed on the ActionBean.  If the ActionBean already existed,
+            supplying the event attribute has no effect.</p>
+
+            <p>Lastly, if the var or id attribute is supplied (they are synonymous and only
+            one should be supplied) the ActionBean is bound in to page context using the name
+            supplied.  This is true in all cases, regardless of whether the ActionBean is newly
+            instantiated, or pre-existing.  This allows the tag to be used to provide an easier
+            name for the ActionBean than referring to it by binding.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="wizard-fields.html">wizard-fields</a></b></td><td>
+            <p>Examines the request and include hidden fields for all parameters that have do
+            not have form fields in the current form. Will include multiple values for
+            parameters that have them.  Excludes 'special' parameters like the source
+            page parameter, and the paramter that conveyed the event name.</p>
+
+            <p>Very useful for implementing basic wizard flow without relying on session
+            scoping of ActionBeans, and without having to name all the parameters that
+            should be carried forward in the form.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="layout-definition.html">layout-definition</a></b></td><td>
+            <p>Defines a reusable layout. This tag is designed to wrap the entire contents of a
+            JSP that is to be re-used to manage the layout of multiple pages. It can contain
+            HTML, JSP content, scriptlets etc.  It may also contain stripes:layout-component
+            tags.  The stripes:layout-component names a section of the layout that can be
+            supplied during rendering (it may be empty, or have default contents).</p>
+
+            <p>Layout definitions will also have access to, through PageContext,
+            any attributes/parameters supplied at rendering time.  These can be referenced in the layout
+            definition using EL, for example as ${myCustomParameter}.  This allows layouts not
+            only to templatize look and feel, but to potentially render differently based on
+            the values of parameters passed in at rendering time.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="layout-component.html">layout-component</a></b></td><td>
+            <p>Used to define or supply a component of a layout.  The stripes:layout-component
+            tag can be nested inside both the stripes:layout-definition and
+            stripes:layout-render tags.  In the former case it defines a named component in the
+            layout, and the (optional) body provides a default for the component. When nested in
+            a stripes:layout-render tag, the body overrides the named component defined in the
+            layout.</p>
+
+            <p>The vanilla case would be to have a layout which defines the header/footer etc. for
+            your site and that has a component named "body" or "contents" or something similar,
+            which wraps the area where page content would normally be displayed.  Then, when
+            using that layout through a stripes:layout-render tag, you would use a
+            stripes:layout-component tag to provide a value for the "body" or "contents"
+            component of the layout.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="layout-render.html">layout-render</a></b></td><td>
+            <p>Renders the named layout, supplying it with any specified parameters and overridden
+            components.  In addition to being able to supply nested stripes:layout-component tags,
+            you may also supply any number of dynamic or arbitrary parameters to this tag. All
+            parameters (except name) will be made available to the layout definition through the
+            page context.</p>
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="format.html">format</a></b></td><td>
+            Formats an object using Stripes' formatting facilities. If no formatter is available
+            for the object, then toString() is called. Null values are formatted as an empty
+            string. If a 'var' attribute is specified, the generated URL will be written to that
+            variable, otherwise it will be written into the page.
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="field-metadata.html">field-metadata</a></b></td><td>
+            Creates a script section containing form field metadata.
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="page-options.html">page-options</a></b></td><td>
+            Sets options that affect how other tags in this tag library behave.
+        </td>
+</tr>
+</table>
+              &nbsp;
+              <p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="3"><font size="+2"><b>Function Summary</b></font></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap="" align="right"><code>java.lang.String</code></td><td width="15%" nowrap=""><code><b><a href="enumName.fn.html">enumName</a></b>( java.lang.Enum)</code></td><td>
+            Returns the name of the supplied Java 5 enumeration value; useful since EL will
+            only access JavaBean style properties, and the name attribute of an enum is always
+            accessed using the function name(), not getName().
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%" nowrap="" align="right"><code>boolean</code></td><td width="15%" nowrap=""><code><b><a href="hasErrors.fn.html">hasErrors</a></b>( net.sourceforge.stripes.action.ActionBean, java.lang.String)</code></td><td>
+            Indicates if validation errors exist for the given field of the given ActionBean.
+            This allows for use of JSTL logic tags such as c:if and c:choose.
+        </td>
+</tr>
+</table>
+              &nbsp;
+              <p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Java, JSP, and JavaServer Pages are trademarks or registered 
+            trademarks of Sun Microsystems, Inc. in the US and other countries.
+            Copyright 2002-3 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved. 
+            </i></small>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<html xmlns:j2ee="http://java.sun.com/xml/ns/j2ee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>label
+          (Stripes 1.5.6 Tag Library Documentation)
+        </title>
+<meta name="keywords" content="$title">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="label (Stripes 1.5.6 Tag Library Documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="label.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>
+<font size="-1">Stripes Tag Library</font>
+<br>
+            Tag label</h2>
+<hr>
+            <p>Label tag that can look up localized field labels and render differently when the
+            labelled field is in error.  While the label field is usually used to generated form
+            field labels, it can be used to generate HTML label tags with arbitrary localized or
+            non-localized values.</p>
+
+            <p>It is important to understand the relationship between the <tt>name</tt> and
+            <tt>for</tt> attributes of the <tt>stripes:label</tt> tag.  The <tt>for</tt> attribute
+            is used directly to generated the <tt>for</tt> attribute of the generated HTML
+            <tt>label</tt> tag, and as such should correspond to the HTML <tt>id</tt> attribute
+            of the input tag for which it is a label.  If the <tt>name</tt> attribute is omitted
+            then the value of the <tt>for</tt> attribute will also be used as the <tt>name</tt>
+            attribute.</p>
+
+            <p>The value of the label is set by searching for a non-null value in the following
+             order:</p>
+
+            <ul>
+                <li>resource: <code>{actionFQN}.{name}</code></li>
+                <li>resource: <code>{actionPath}.{name}</code> (deprecated)</li>
+                <li>resource: <code>{name}</code></li>
+                <li>The body of the label tag</li>
+                <li>A warning message telling you to supply a label value somewhere!</li>
+            </ul>
+
+            <p>In the case of indexed or mapped form fields (e.g. <tt>foo[3].bar</tt>) the
+            indexing and mapping will be removed from the name prior to using it to lookup
+            labels (e.g. <tt>foo.bar</tt>).  This is done to remain consistent with the way
+            field names are looked up for error messages.</p>
+
+            <p>It should be noted that in cases where a form field and HTML control are
+            one-to-one (e.g. text, password, select) the name of the label will usually equal
+            the name of the control.  However, this need not be the case.  You may use any value
+            for the name of the label, <b>but</b> the label will only perform error rendering
+            correctly if the name is equal to the name of the form field being labelled. To
+            illustrate this point consider the following example:</p>
+
+<pre>
+&lt;th&gt;
+    &lt;stripes:label for="bug.status"/&gt;:
+&lt;/th&gt;
+&lt;td&gt;
+    &lt;c:forEach var="status" items="&lt;%=Status.values()%&gt;"&gt;
+        &lt;stripes:radio id="bug.status.${stripes:enumName(status)}"
+                       name="bug.status"
+                       value="${stripes:enumName(status)}"/&gt;
+        &lt;stripes:label for="bug.status.${stripes:enumName(status)}"&gt;
+            ${stripes:enumName(status)}
+        &lt;/stripes:label&gt;
+    &lt;/c:forEach&gt;
+&lt;/td&gt;
+</pre>
+
+        <p>The above example uses one label tag at the top (with <tt>for="bug.status"</tt>) that
+        labels a row in the table and will display differently when the <tt>bug.status</tt> field
+        is in error.  It then employs a label tag for each radio button.  These are bound to the
+        individual radio buttons (clicking on the label will select the appropriate radio button),
+        and default to the name of the enum value if a localized name isn't found.  Since these
+        labels do not match the field name exactly, they will not render differently when the
+        field is in error.</p>
+        <br>
+<p></p>
+<hr>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+</tr>
+<tr>
+<td>Tag Class</td><td>net.sourceforge.stripes.tag.InputLabelTag</td>
+</tr>
+<tr>
+<td>TagExtraInfo Class</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Body Content</td><td>JSP</td>
+</tr>
+<tr>
+<td>Display Name</td><td>label</td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+</tr>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>name</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                The name of the field being labelled (or of the label if it is not specific to a
+                field) if the name of the field is not the same as the HTML id of the field. If the
+                name and id are the same, the for attribute should be used alone.
+            </td>
+</tr>
+<tr valign="top">
+<td>for</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                The HTML id of the field/control being labelled.  If the name attribute is
+                omitted, the value of this attribute will also be used as the name.
+            </td>
+</tr>
+<tr valign="top">
+<td>accesskey</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Keyboard shortcut to access the element. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>class</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>The CSS class to be applied to the element. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>dir</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Text direction. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>id</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>A unique identifier for the HTML tag on the page. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>lang</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>The language code of the element. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onblur</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when the element loses focus. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onchange</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when the element changes. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onclick</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run on each mouse click. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>ondblclick</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run on a double-click of the mouse. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onfocus</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when the element acquires focus. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onkeydown</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when a key is depressed. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onkeypress</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when a key is pressed and released. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onkeyup</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when a key is released. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onmousedown</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when a mouse button is depressed. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onmousemove</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when the mouse pointer is moved. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onmouseout</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when the mouse pointer moves out of the element. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onmouseover</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when the mouse pointer moves over the element. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onmouseup</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when a mouse button is released. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>onselect</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Scripting code run when an element is selected. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>style</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Inline CSS style fragment that applies to the element (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>tabindex</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>The tab order of the element. (HTML Pass-through)</td>
+</tr>
+<tr valign="top">
+<td>title</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>Tool-tip text for the element. (HTML Pass-through)</td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Variables</b></font></td>
+</tr>
+<td colspan="2"><i>No Variables Defined.</i></td>
+</table>
+<br>
+<p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="label.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Output Generated by 
+            <a href="http://taglibrarydoc.dev.java.net/" target="_blank">Tag Library Documentation Generator</a>.
+            Java, JSP, and JavaServer Pages are trademarks or 
+            registered trademarks of Sun Microsystems, Inc. in the US and other
+            countries.  Copyright 2002-4 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved. 
+            </i></small>
+</body>
+</html>
