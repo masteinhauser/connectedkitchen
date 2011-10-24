@@ -5,5 +5,7 @@
 --%>
 <%@include file="/include/jsp/taglibs.jsp" %>
 <s:layout-render name="/include/jsp/layout_main.jsp" title="Recipes">
-    <s:layout-component name="body"><h3>Recipe Page</h3></s:layout-component>
+    <s:layout-component name="body">
+        <h3>Recipe Page</h3>
+    </s:layout-component>
 </s:layout-render>

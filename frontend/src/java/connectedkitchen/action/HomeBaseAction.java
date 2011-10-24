@@ -10,7 +10,7 @@ import net.sourceforge.stripes.action.Resolution;
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-public class HomeAction extends _Action {
+public class HomeBaseAction extends _Action {
 
     private static final String VIEW = "/home.jsp";
     private Date date;
