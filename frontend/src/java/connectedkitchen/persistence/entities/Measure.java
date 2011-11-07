@@ -1,6 +1,7 @@
 package connectedkitchen.persistence.entities;
 
-import javax.persistence.ManyToOne;
+import java.util.Set;
+import javax.persistence.OneToMany;
 import org.hibernate.annotations.Entity;
 
 /**
@@ -8,11 +9,9 @@ import org.hibernate.annotations.Entity;
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
 @Entity
-public class Inventory extends BaseEntity {
+public class Measure extends BaseEntity {
     
-    @ManyToOne
-    private Item item;
+    @OneToMany(mappedBy="measure")
+    private Set<RecipeItem> recipeItems;
     
-    @ManyToOne
-    private User user;
 }

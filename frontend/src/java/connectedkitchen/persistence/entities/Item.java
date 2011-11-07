@@ -10,14 +10,14 @@ import org.hibernate.annotations.Entity;
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
 @Entity
-public class Recipe extends BaseEntity {
+public class Item extends BaseEntity {
     
-    @OneToMany(mappedBy="recipe")
-    private Set<Favorite> favorites;
+    @OneToMany(mappedBy="item")
+    private Set<RecipeItem> recipeItem;
     
-    @OneToMany(mappedBy="recipe")
-    private Set<RecipeHistory> recipeHistory;
+    @OneToMany(mappedBy="item")
+    private Set<Inventory> inventory;
     
     @ManyToOne
-    private RecipeItem recipeItem;
+    private User user;
 }

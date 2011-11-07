@@ -8,10 +8,9 @@ import org.hibernate.annotations.Entity;
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
 @Entity
-public class Inventory extends BaseEntity {
-    
+public class RecipeHistory extends BaseEntity {
     @ManyToOne
-    private Item item;
+    private Recipe recipe;
     
     @ManyToOne
     private User user;
