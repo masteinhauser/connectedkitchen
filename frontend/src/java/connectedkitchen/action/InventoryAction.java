@@ -8,7 +8,7 @@ import net.sourceforge.stripes.action.Resolution;
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-public class InventoryBaseAction extends _Action {
+public class InventoryAction extends _Action {
 
     private static final String VIEW = "/inventory.jsp";
     private String test;

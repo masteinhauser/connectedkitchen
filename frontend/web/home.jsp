@@ -16,11 +16,11 @@
             </b>
         </p>
         <p>
-            <s:link beanclass="connectedkitchen.action.HomeBaseAction"
+            <s:link beanclass="connectedkitchen.action.HomeAction"
                     event="currentDate" >
                 Show the current date and time
             </s:link> |
-            <s:link beanclass="connectedkitchen.action.HomeBaseAction"
+            <s:link beanclass="connectedkitchen.action.HomeAction"
                     event="randomDate" >
                 Show a random date and time
             </s:link>

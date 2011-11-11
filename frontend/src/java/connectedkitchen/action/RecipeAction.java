@@ -8,7 +8,7 @@ import net.sourceforge.stripes.action.Resolution;
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-public class RecipeBaseAction extends _Action {
+public class RecipeAction extends _Action {
 
     private static final String VIEW = "/recipe.jsp";
     
