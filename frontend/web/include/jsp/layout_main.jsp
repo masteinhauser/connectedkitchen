@@ -12,7 +12,7 @@
     "http://www.w3.org/TR/html4/strict.dtd">
   <html>
     <head>
-      <title>${title}</title><!-- (1) -->
+      <title>${title}</title>
       <link rel="stylesheet" type="text/css"
         href="${contextPath}/css/style.css">
     </head>
@@ -28,21 +28,6 @@
       <div id="body">
         <s:layout-component name="body"/>
       </div>
-
-      <%--
-      <!-- View source links just for convenience -->
-      <div style="padding-left: 8px">
-        Source:
-        <s:link beanclass="stripesbook.action.ViewSourceActionBean">
-          <s:param name="filename" value="<%= request.getRequestURI() %>"/>
-          JSP
-        </s:link> |
-        <s:link beanclass="stripesbook.action.ViewSourceActionBean">
-          <s:param name="filename" value="${actionBean.class.name}"/>
-          Action Bean
-        </s:link>
-      </div>
-      --%>
     </body>
   </html>
 </s:layout-definition>
