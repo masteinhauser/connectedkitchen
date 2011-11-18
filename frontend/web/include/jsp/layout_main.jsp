@@ -23,6 +23,7 @@
             <s:link beanclass="connectedkitchen.action.HomeAction">Home</s:link>
             | <s:link beanclass="connectedkitchen.action.InventoryAction">Inventory</s:link>
             | <s:link beanclass="connectedkitchen.action.RecipeAction">Recipe</s:link>
+            | <s:link beanclass="connectedkitchen.action.ShoppingAction">Shopping</s:link>
         </p>
       </div>
       <div id="body">
