@@ -14,7 +14,7 @@
     <head>
       <title>${title}</title>
       <link rel="stylesheet" type="text/css"
-        href="${contextPath}/css/style.css">
+        href="${contextPath}/css/ck.css">
     </head>
     <body>
       <div id="header">

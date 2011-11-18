@@ -4,7 +4,7 @@
     Author     : Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
 --%>
 <%@include file="/include/jsp/taglibs.jsp" %>
-<s:layout-render name="/include/jsp/layout_main.jsp" title="Shopping | Edit">
+<s:layout-render name="/include/jsp/layout_main.jsp" title="Shopping | ${actionBean.action}">
     <s:layout-component name="body">
         <s:layout-render name="/include/jsp/layout_shopping.jsp" page="Shopping ${actionBean.action}">
             <s:layout-component name="content">
