@@ -32,7 +32,7 @@ public class AuthenticationServlet extends HttpServlet {
       loginBean.setPassword(password);
     }
     // set the forwarding address
-    String address = "WEB-INF/mvc-sharing/ShowName.jsp";
+    String address = "WEB-INF/login.jsp";
     // request dispatcher is used to forward
     RequestDispatcher dispatcher =
       request.getRequestDispatcher(address);

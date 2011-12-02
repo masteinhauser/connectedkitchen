@@ -3,7 +3,7 @@ package coreservlets;
 
 /**
  *
- * @author Amanda
+ * @author Amanda Gilles and Myles Steinhauser
  */
 public class LoginBean {
     private String emailAddress = "Enter email address";

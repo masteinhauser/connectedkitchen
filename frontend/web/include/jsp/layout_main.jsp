@@ -17,25 +17,27 @@
         </head>
         <body>
             <h2>Connected Kitchen</h2>
-                <table col="4" row="5" id="main" align="center">
-                    <tr>
-                        <td><s:link beanclass="connectedkitchen.action.HomeAction">Home</s:link></td>
-                        <td><s:link beanclass="connectedkitchen.action.InventoryAction">Inventory</s:link></td>
-                        <td><s:link beanclass="connectedkitchen.action.RecipeAction">Recipe</s:link></td>
-                        <td><s:link beanclass="connectedkitchen.action.ShoppingAction">Shopping</s:link></td>
+            <table col="4" row="5" id="main" align="center">
+                <tr>
+                    <td><s:link beanclass="connectedkitchen.action.HomeAction">Home</s:link></td>
+                    <td><s:link beanclass="connectedkitchen.action.InventoryAction">Inventory</s:link></td>
+                    <td><s:link beanclass="connectedkitchen.action.RecipeAction">Recipe</s:link></td>
+                    <td><s:link beanclass="connectedkitchen.action.ShoppingAction">Shopping</s:link></td>
                     </tr>
                     <tr>
-                        <s:layout-component name="left"/>
-                    </tr>
-                    <tr>
-                        <s:layout-component name="center"/>
-                    </tr>
-                    <tr></tr>
-                    <tr>
-                        <s:layout-component name="right"/>
-                    </tr>
-                    <tr></tr>
-                </table>
+                    <s:layout-component name="left"/>
+                </tr>
+                <tr>
+                    <s:layout-component name="right"/>
+                </tr>
+                <tr>
+                    <s:layout-component name="center"/>
+                </tr>
+                <tr>
+                    <s:layout-component name="bottom"/>
+                </tr>
+                <tr></tr>
+            </table>
         </body>
     </html>
 </s:layout-definition>
