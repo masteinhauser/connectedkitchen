@@ -6,28 +6,22 @@
 --%>
 <%@include file="/include/jsp/taglibs.jsp" %>
 <s:layout-render name="/include/jsp/layout_main.jsp" title="Connected Kitchen">
-    <s:layout-component name="body">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Connected Kitchen Login</title>
-    </head>
-    <body>
-                <table col="4" row="5" id="main" align="center">
-            <tr>
-                <td><s:link beanclass="connectedkitchen.action.HomeAction">Home</s:link></td>
-                <td><s:link beanclass="connectedkitchen.action.InventoryAction">Inventory</s:link></td>
-                <td><s:link beanclass="connectedkitchen.action.RecipeAction">Recipe</s:link></td>
-                <td><s:link beanclass="connectedkitchen.action.ShoppingAction">Shopping</s:link></td>
-            </tr>
-            <tr>
-                <td colspan="2" rowspan="4"><img src="white.jpg" /></td>
-            </tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
-            <tr></tr>
-        </table>
-    </body>
-
-    </s:layout-component>
+            <s:layout-component name="left">
+            <td colspan="2" rowspan="4"><img src="<c:url value='/include/img/white.jpg'/>" /></td>
+            </s:layout-component>
+            <s:layout-component name="center">
+            <td rowspan="2" colspan="2" align="center" valign="middle">
+                If you have already registered, enter your email address and password.<br />
+                For new users, please select the new user link.<br />
+            </td>
+        </s:layout-component>
+        <s:layout-component name="right">
+            <form action="reg">
+                <td colspan=""2" align="center" valign="middle">
+                    <input type="text" name="emailAddress" value="Email Address" size="30" /><br />
+                    <input type="text" name="password" value="Password" size="30" /><br />
+                    <input type="submit" value="Login" name="submit" />
+                </td>
+            </form>
+        </s:layout-component>
 </s:layout-render>

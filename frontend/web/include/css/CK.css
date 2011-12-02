@@ -23,7 +23,7 @@ h2		{text-align: center;
 }
 
 img		{	
-    float: left;
+    float: center;
     height: 600px;
     width: 400px;
 }

@@ -27,7 +27,9 @@
                     <tr>
                         <s:layout-component name="left"/>
                     </tr>
-                    <tr></tr>
+                    <tr>
+                        <s:layout-component name="center"/>
+                    </tr>
                     <tr></tr>
                     <tr>
                         <s:layout-component name="right"/>
