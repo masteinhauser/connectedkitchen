@@ -13,14 +13,27 @@
     <html>
         <head>
             <title>${title}</title>
-            <link rel="stylesheet" type="text/css"
-                  href="CK.css" />
+            <link rel="stylesheet" type="text/css" href="<c:url value='/include/css/CK.css'/>" />
         </head>
         <body>
             <h2>Connected Kitchen</h2>
-            <div class="body">
-                <s:layout-component name="body"/>
-            </div>
+                <table col="4" row="5" id="main" align="center">
+                    <tr>
+                        <td><s:link beanclass="connectedkitchen.action.HomeAction">Home</s:link></td>
+                        <td><s:link beanclass="connectedkitchen.action.InventoryAction">Inventory</s:link></td>
+                        <td><s:link beanclass="connectedkitchen.action.RecipeAction">Recipe</s:link></td>
+                        <td><s:link beanclass="connectedkitchen.action.ShoppingAction">Shopping</s:link></td>
+                    </tr>
+                    <tr>
+                        <s:layout-component name="left"/>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <s:layout-component name="right"/>
+                    </tr>
+                    <tr></tr>
+                </table>
         </body>
     </html>
 </s:layout-definition>
