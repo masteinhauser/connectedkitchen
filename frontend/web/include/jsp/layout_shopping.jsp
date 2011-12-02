@@ -11,12 +11,16 @@
       <div id="content">
         <span class="page">${page} Page</span>
         <br />
-        <s:link beanclass="connectedkitchen.action.ShoppingAction" event="list">List</s:link>
-        <s:link beanclass="connectedkitchen.action.ShoppingAction" event="add">Add</s:link>
-        <s:link beanclass="connectedkitchen.action.ShoppingAction" event="edit">Edit</s:link>
+        <table>
+            <tr>
+                <td colspan="2"><s:link beanclass="connectedkitchen.action.ShoppingAction" event="list">List</s:link></td>
+            </tr>
+            <tr>
+                <td><s:link beanclass="connectedkitchen.action.ShoppingAction" event="add">Add</s:link></td>
+                <td><s:link beanclass="connectedkitchen.action.ShoppingAction" event="edit">Edit</s:link></td>
+            </tr>
+        </table>
         <br />
         <s:layout-component name="content"/>
       </div>
-    </body>
-  </html>
 </s:layout-definition>

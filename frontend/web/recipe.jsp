@@ -5,7 +5,12 @@
 --%>
 <%@include file="/include/jsp/taglibs.jsp" %>
 <s:layout-render name="/include/jsp/layout_main.jsp" title="Recipes">
-    <s:layout-component name="body">
-        <h3>Recipe Page</h3>
+    <s:layout-component name="left">
+        <td colspan="2" rowspan="4"><img src="<c:url value='/include/img/white.jpg'/>" /></td>
+    </s:layout-component>
+    <s:layout-component name="right">
+        <td colspan="2" rowspan="3" valign="bottom">
+            <p>${actionBean.test}</p>
+        </td>
     </s:layout-component>
 </s:layout-render>
