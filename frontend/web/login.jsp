@@ -7,8 +7,12 @@
 <%@include file="/include/jsp/taglibs.jsp" %>
 <s:layout-render name="/include/jsp/layout_main.jsp" title="Connected Kitchen">
     <s:layout-component name="body">
-
-        <table col="4" row="5" id="main" align="center">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Connected Kitchen Login</title>
+    </head>
+    <body>
+                <table col="4" row="5" id="main" align="center">
             <tr>
                 <td><s:link beanclass="connectedkitchen.action.HomeAction">Home</s:link></td>
                 <td><s:link beanclass="connectedkitchen.action.InventoryAction">Inventory</s:link></td>
@@ -20,16 +24,10 @@
             </tr>
             <tr></tr>
             <tr></tr>
-            <tr>
-                <td rowspan="3" valign="bottom">
-                    <a href="login.jsp" id="click">Login</a>
-                </td>
-                <td rowspan="3" valign="bottom">
-                    <a href="newUser.jsp" id="click">New User</a>
-                </td>
-            </tr>
+            <tr></tr>
             <tr></tr>
         </table>
+    </body>
 
     </s:layout-component>
 </s:layout-render>

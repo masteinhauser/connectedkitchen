@@ -1,0 +1,79 @@
+/* 
+    Document   : ck
+    Created on : Nov 17, 2011, 5:20:30 PM
+    Author     : myles, gilles
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+body            {font-family: cursive;
+                 color: #990000;
+                 background-color: #EADFBF;
+                 font-size: 25px;
+}
+
+h2		{text-align: center;
+     color: #990000;
+}
+
+img		{	
+    float: left;
+    height: 600px;
+    width: 400px;
+}
+a:visited {
+    color: #EADFBF;
+}
+
+a:link {
+    background-color: #990000;
+    color: #EADFBF;
+    display: block;
+    height: 30px;
+    width: 195px;
+    padding: 5px 0 5px 10px;
+    margin-right: 0px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.body {
+    float: none;
+    text-align: center;
+    vertical-align: top;
+    
+}
+
+#main {
+    align: left;
+    vertical-align: top;
+}
+#right {
+    align: right;
+    vertical-align: top;
+}
+
+#click {
+    background-color: #EADFBF;
+    color: #990000;
+    font-weight: bold;
+    vertical-align:baseline;
+    float: right;
+}
+
+table	{
+    border: 0px;
+    padding: none;
+    align: center;
+}
+
+td	{
+    text-align: center;
+}
+
