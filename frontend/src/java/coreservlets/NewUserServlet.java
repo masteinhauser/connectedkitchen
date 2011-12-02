@@ -11,7 +11,7 @@ import javax.servlet.http.*;
  *  to remember previous values.
  */
 
-public class RegistrationServlet extends HttpServlet {
+public class NewUserServlet extends HttpServlet {
   public void doGet(HttpServletRequest request,
                     HttpServletResponse response)
       throws ServletException, IOException {
