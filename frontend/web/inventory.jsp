@@ -9,8 +9,10 @@
         <td colspan="2" rowspan="4"><img src="<c:url value='/include/img/white.jpg'/>" /></td>
     </s:layout-component>
     <s:layout-component name="right">
-        <td colspan="2" rowspan="3" valign="bottom">
-            <p>${actionBean.test}</p>
-        </td>
+        <tr>
+            <td colspan="2" rowspan="4" valign="bottom">
+                <p>${actionBean.message}</p>
+            </td>
+        </tr>
     </s:layout-component>
 </s:layout-render>

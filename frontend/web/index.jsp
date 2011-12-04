@@ -4,5 +4,5 @@
     Author     : Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
 --%>
 
-<!-- Stripes redirect page to HelloAction.java calling the DefaultHandler method. -->
-<jsp:forward page="/Home.action"/>
+<!-- Stripes redirect page to HomeAction.java calling the DefaultHandler method. -->
+<jsp:forward page="/home.action"/>

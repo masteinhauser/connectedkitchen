@@ -3,11 +3,13 @@ package connectedkitchen.action;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
+import net.sourceforge.stripes.action.UrlBinding;
 
 /**
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
+@UrlBinding("/shopping.action")
 public class ShoppingAction extends _Action {
 
     private static final String VIEW = "/shopping.jsp";
@@ -24,19 +26,19 @@ public class ShoppingAction extends _Action {
     
     public Resolution list(){
         action = "List";
-        content = "This is where we list all of their recipes!";
+        content = "This is where we list all of their needed items!";
         return new ForwardResolution(LIST);
     }
     
     public Resolution add(){
         action = "Add";
-        content = "This is where they can add a NEW recipe!";
+        content = "This is where they can add to their shopping list!";
         return new ForwardResolution(FORM);
     }
     
     public Resolution edit(){
         action = "Edit";
-        content = "This is when we pull data from the database and they can EDIT a recipe! WOOOO!!!";
+        content = "This is when we pull data from the database and they can EDIT recipe list! WOOOO!!!";
         return new ForwardResolution(FORM);
     }
     

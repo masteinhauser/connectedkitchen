@@ -7,14 +7,21 @@
 <%@include file="/include/jsp/taglibs.jsp" %>
 <s:layout-render name="/include/jsp/layout_main.jsp" title="Connected Kitchen">
     <s:layout-component name="left">
-        <td colspan="2" rowspan="4"><img src="<c:url value='/include/img/white.jpg'/>" /></td>
+        <tr>
+            <td colspan="2" rowspan="5"><img src="<c:url value='/include/img/white.jpg'/>" /></td>
+        </tr>
     </s:layout-component>
     <s:layout-component name="right">
-        <td rowspan="3" valign="bottom">
-            <a href="login.jsp" id="click">Login</a>
-        </td>
-        <td rowspan="3" valign="bottom">
-            <a href="newUser.jsp" id="click">New User</a>
-        </td>
+        <tr>
+            <td colspan="2">${actionBean.message}</td>
+        </tr>
+        <tr>
+            <td rowspan="3" valign="bottom">
+                <s:link beanclass="connectedkitchen.action.LoginAction">Login</s:link>
+            </td>
+            <td rowspan="3" valign="bottom">
+                <s:link beanclass="connectedkitchen.action.UserAction">New User</s:link>
+            </td>
+        </tr>
     </s:layout-component>
 </s:layout-render>

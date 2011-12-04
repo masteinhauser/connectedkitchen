@@ -10,11 +10,6 @@ import net.sourceforge.stripes.action.ActionBeanContext;
 public class _Action implements ActionBean {
 
     private ActionBeanContext actionBeanContext;
-    private String test = "Test!";
-
-    public String getTest() {
-        return test;
-    }
 
     @Override
     public ActionBeanContext getContext() {

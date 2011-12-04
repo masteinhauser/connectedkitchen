@@ -38,8 +38,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
     <init-param>
         <param-name>Extension.Packages</param-name>
         <param-value>
-            connectedkitchen.ext,
-            org.stripesstuff.stripersist
+            connectedkitchen.ext
         </param-value>
     </init-param>
 </web-app>
