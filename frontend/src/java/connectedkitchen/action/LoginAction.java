@@ -21,7 +21,7 @@ public class LoginAction extends _Action {
     }
     
     public Resolution login() {
-        return new ForwardResolution(HomeAction.class, "login");
+        return new ForwardResolution(connectedkitchen.action.HomeAction.class, "login");
     }
 
     public String getEmailAddress() {

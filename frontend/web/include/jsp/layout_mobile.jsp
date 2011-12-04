@@ -22,21 +22,21 @@
         </head>
         <body>
             <div data-role="page" id="home">
-                <div data-role="page" id="header">
+                <div data-role="header">
                     <h1>${title}</h1>
                 </div>
                 
-                <div data-role="page" id="content">
+                <div data-role="content">
                     <s:layout-component name="page"/>
                 </div>
                 
                 <div data-role="footer" data-position="fixed" data-id="nav">
                     <div data-role="navbar">
                         <ul>
-                            <li><s:link beanclass="connectedkitchen.action.mobile.HomeAction" event="mobile" class="ui-btn-active ui-state-persist">Inventory</s:link></li>
-                            <li><s:link beanclass="connectedkitchen.action.mobile.InventoryAction" event="mobile">Inventory</s:link></li>
-                            <li><s:link beanclass="connectedkitchen.action.mobile.RecipeAction" event="mobile">Recipe</s:link></li>
-                            <li><s:link beanclass="connectedkitchen.action.mobile.ShoppingAction" event="mobile">Shopping</s:link></li>
+                            <li><s:link beanclass="connectedkitchen.action.mobile.HomeAction">Home</s:link></li>
+                            <li><s:link beanclass="connectedkitchen.action.mobile.InventoryAction">Inventory</s:link></li>
+                            <li><s:link beanclass="connectedkitchen.action.mobile.RecipeAction">Recipe</s:link></li>
+                            <li><s:link beanclass="connectedkitchen.action.mobile.ShoppingAction">Shopping</s:link></li>
                         </ul>
                     </div>
                 </div>

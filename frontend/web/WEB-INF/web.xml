@@ -2,8 +2,7 @@
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
-http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
->
+http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
     <filter>
         <filter-name>StripesFilter</filter-name>
         <filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
@@ -32,7 +31,8 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>home.action</welcome-file>
+        <welcome-file>/m/home.action</welcome-file>
     </welcome-file-list>
 
     <init-param>

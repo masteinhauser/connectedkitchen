@@ -19,8 +19,7 @@ public class UserAction extends _Action {
     }
     
     public Resolution register() {
-        action = "Edit";
-        return new ForwardResolution(HomeAction.class, "register");
+        return new ForwardResolution(connectedkitchen.action.HomeAction.class, "register");
     }
     
     public String getAction(){
