@@ -1,9 +1,12 @@
 package connectedkitchen.action;
 
+import connectedkitchen.persistence.entities.User;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.validation.SimpleError;
+import net.sourceforge.stripes.validation.ValidationErrors;
 
 /**
  *
@@ -13,30 +16,44 @@ import net.sourceforge.stripes.action.UrlBinding;
 public class LoginAction extends _Action {
     private static final String VIEW = "/login.jsp";
 
-    private String emailAddress, password;
+    private String email, pass;
     
     @DefaultHandler
     public Resolution view() {
         return new ForwardResolution(VIEW);
     }
     
-    public Resolution login() {
+    public Resolution login() {        
+        // Check to see they actually entered login info.
+        if(email == null || pass == null){
+            ValidationErrors errors = new ValidationErrors();
+            errors.add( "authentication", new SimpleError("Please fill in email and password.") );
+            getContext().setValidationErrors(errors);
+            
+            return getContext().getSourcePageResolution();
+        }
+        
+        // We should not check the username against the database and if the user is found and the password matches, log them in. 
+        // For now we'll simply set them as a hardcoded user.
+        User user = new User(1, true);  // UserID is 1 and they are an Admin
+        context.setUser(user);
+        
         return new ForwardResolution(connectedkitchen.action.HomeAction.class, "login");
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPass() {
+        return pass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 }

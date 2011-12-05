@@ -24,5 +24,8 @@
                 <td colspan="2"><s:submit name="login" id="login" value="Login"/></td>
             </tr>
         </s:form>
+        <tr>
+            <td colspan="2"><s:errors /></td>
+        </tr>
     </s:layout-component>
 </s:layout-render>
