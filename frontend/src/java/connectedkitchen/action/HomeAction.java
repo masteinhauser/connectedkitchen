@@ -12,6 +12,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 @UrlBinding("/home.action")
 public class HomeAction extends _Action {
     private static final String VIEW = "/home.jsp";
+    private static final String HOME = "/usersHome.jsp";
     
     private String message;
     
@@ -22,8 +23,11 @@ public class HomeAction extends _Action {
     }
     
     public Resolution login() {
-        message = "Thanks for logging in!";
-        return new ForwardResolution(VIEW);
+        message = "<h3>Thanks for logging in!</h3> <br /> Once this page is complete"
+                + " it'll contain a list of favorite recipes, as well as "
+                + " an alert if applicable to items that need to be restocked"
+                + " in the kitchen.";
+        return new ForwardResolution(HOME);
     }
     
     public Resolution register() {
