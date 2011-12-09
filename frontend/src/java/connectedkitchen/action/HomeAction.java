@@ -12,7 +12,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 @UrlBinding("/home.action")
 public class HomeAction extends _Action {
     private static final String VIEW = "/home.jsp";
-    private static final String HOME = "/usersHome.jsp";
+    private static final String HOME = "/userHome.jsp";
     
     private String message;
     
@@ -31,8 +31,10 @@ public class HomeAction extends _Action {
     }
     
     public Resolution register() {
-        message = "Thanks for registering!";
-        return new ForwardResolution(VIEW);
+        message = "<h3>Thank you for registering!</h3><br />"
+                + "When complete, this page will display links to getting started"
+                + " help files.";
+        return new ForwardResolution(HOME);
     }
     
     public String getMessage(){

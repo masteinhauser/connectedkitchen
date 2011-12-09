@@ -32,8 +32,11 @@ public class LoginAction extends _Action {
             
             return getContext().getSourcePageResolution();
         }
+       
         
         // We should not check the username against the database and if the user is found and the password matches, log them in. 
+        
+        
         // For now we'll simply set them as a hardcoded user.
         User user = new User(1, true);  // UserID is 1 and they are an Admin
         context.setUser(user);
