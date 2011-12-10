@@ -27,9 +27,9 @@ public class LoginContext extends ActionBeanContext{
     public LoginType getLoginType(){
         final User user = getUser();
         if(user != null){
-            if(user.getAdmin()){
+            if(user.isAdmin()){
                 return LoginType.ADMIN;
-            } else if (!user.getAdmin()){
+            } else if (!user.isAdmin()){
                 return LoginType.USER;
             } else {
                 return LoginType.GUEST;
