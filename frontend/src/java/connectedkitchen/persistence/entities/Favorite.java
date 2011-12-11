@@ -13,5 +13,5 @@ public class Favorite extends BaseEntity {
     private Recipe recipe;
     
     @ManyToOne
-    private User user;
+    private UserEntity user;
 }

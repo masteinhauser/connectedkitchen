@@ -19,5 +19,5 @@ public class Item extends BaseEntity {
     private Set<Inventory> inventory;
     
     @ManyToOne
-    private User user;
+    private UserEntity user;
 }

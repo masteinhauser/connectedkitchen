@@ -14,5 +14,5 @@ public class Inventory extends BaseEntity {
     private Item item;
     
     @ManyToOne
-    private User user;
+    private UserEntity user;
 }
