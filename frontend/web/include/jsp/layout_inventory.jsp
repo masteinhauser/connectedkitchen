@@ -1,6 +1,6 @@
 <%-- 
-    Document   : layout_recipe
-    Created on : Dec 9, 2011, 12:24:16 PM
+    Document   : layout_inventory
+    Created on : Dec 11, 2011, 11:09:36 AM
     Author     : Amanda Gilles <agilles220@gmail.com>
 --%>
 
@@ -17,10 +17,10 @@
         </td>
     </tr>
     <tr>
-        <td colspan="2"><s:link beanclass="connectedkitchen.action.RecipeAction" event="search" style="width: 394px">Search</s:link></td>
+        <td colspan="2"><s:link beanclass="connectedkitchen.action.InventoryAction" event="list" style="width: 394px">List</s:link></td>
     </tr>
     <tr>
-        <td><s:link beanclass="connectedkitchen.action.RecipeAction" event="add">Add</s:link></td>
-        <td><s:link beanclass="connectedkitchen.action.RecipeAction" event="edit">Edit</s:link></td>
+        <td><s:link beanclass="connectedkitchen.action.InventoryAction" event="add">Add</s:link></td>
+        <td><s:link beanclass="connectedkitchen.action.InventoryAction" event="edit">Edit</s:link></td>
     </tr>
 </s:layout-definition>
