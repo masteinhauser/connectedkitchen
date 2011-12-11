@@ -34,7 +34,7 @@ public class LoginAction extends _Action {
         }
        
         
-        // We should not check the username against the database and if the user is found and the password matches, log them in. 
+        // Need to add username and password verification. 
         
         
         // For now we'll simply set them as a hardcoded user.

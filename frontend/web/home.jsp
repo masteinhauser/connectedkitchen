@@ -29,7 +29,7 @@
             </tr>
         </s:form>
         <td rowspan="1" colspan="2" valign="bottom">
-            <s:link beanclass="connectedkitchen.action.UserAction" event="list" style="width: 394px">New User</s:link>
+            <s:link beanclass="connectedkitchen.action.UserAction" event="list" style="width: 394px" >New User</s:link>
             <s:errors />
         </td>
     </tr>
