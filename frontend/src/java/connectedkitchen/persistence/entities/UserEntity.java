@@ -2,6 +2,11 @@ package connectedkitchen.persistence.entities;
 
 import java.io.Serializable;
 import java.util.Set;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import org.hibernate.annotations.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,9 +19,15 @@ import javax.persistence.OneToMany;
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
 @Entity
-@Table(name = "user")
 @SequenceGenerator(name="user_seq",sequenceName="user_id_seq")
-public class User extends BaseEntity implements Serializable {
+public class UserEntity extends BaseEntity implements Serializable {
+@Table(name = "users")
+@NamedQueries({
+    @NamedQuery(name = "UserEntity.getById", query = "SELECT u FROM UserEntity u WHERE u.id = :id"),
+    @NamedQuery(name = "UserEntity.updateById", query = "UPDATE UserEntity u SET u. WHERE u.id = :id")
+
+})
+public class UserEntity extends BaseEntity {
     
     @OneToMany(mappedBy="user")
     @Column(name = "favorite_id")
@@ -52,9 +63,9 @@ public class User extends BaseEntity implements Serializable {
     @Column(name = "postal_code")
     private String postalCode;
     
-    public User(){}
+    public UserEntity(){}
     
-    public User(Integer id, boolean admin){
+    public UserEntity(Integer id, boolean admin){
         this.id = id;
         this.admin = admin;
     }

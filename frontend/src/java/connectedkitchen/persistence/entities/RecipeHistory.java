@@ -16,7 +16,7 @@ public class RecipeHistory extends BaseEntity {
     
     @ManyToOne
     @Column(name = "user_id")
-    private User user;
+    private UserEntity user;
 
     public Recipe getRecipe() {
         return recipe;
@@ -26,11 +26,11 @@ public class RecipeHistory extends BaseEntity {
         this.recipe = recipe;
     }
 
-    public User getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 }

@@ -19,7 +19,7 @@ public class Inventory extends BaseEntity {
     
     @ManyToOne
     @Column(name = "user_id")
-    private User user;
+    private UserEntity user;
     
     @Column(name = "quantity")
     private Double quantity;
@@ -30,7 +30,7 @@ public class Inventory extends BaseEntity {
     @Column(name = "cost")
     private BigInteger cost;
 
-    public Inventory(Item item, User user, Double quantity, Date expiration, BigInteger cost) {
+    public Inventory(Item item, UserEntity user, Double quantity, Date expiration, BigInteger cost) {
         this.item = item;
         this.user = user;
         this.quantity = quantity;
@@ -70,11 +70,11 @@ public class Inventory extends BaseEntity {
         this.quantity = quantity;
     }
 
-    public User getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 }

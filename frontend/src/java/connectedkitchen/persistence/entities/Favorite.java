@@ -16,9 +16,9 @@ public class Favorite extends BaseEntity {
     
     @ManyToOne
     @Column(name = "user_id")
-    private User user;
+    private UserEntity user;
 
-    public Favorite(Recipe recipe, User user) {
+    public Favorite(Recipe recipe, UserEntity user) {
         this.recipe = recipe;
         this.user = user;
     }
@@ -31,11 +31,11 @@ public class Favorite extends BaseEntity {
         this.recipe = recipe;
     }
 
-    public User getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 }
