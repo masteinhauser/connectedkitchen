@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 @Entity
 @Table(name = "user")
 @SequenceGenerator(name="user_seq",sequenceName="user_id_seq")
-public class User extends BaseEntity implements Serializable {
+public class UserEntity extends BaseEntity implements Serializable {
     
     @OneToMany(mappedBy="user")
     @Column(name = "favorite_id")
@@ -52,9 +52,9 @@ public class User extends BaseEntity implements Serializable {
     @Column(name = "postal_code")
     private String postalCode;
     
-    public User(){}
+    public UserEntity(){}
     
-    public User(Integer id, boolean admin){
+    public UserEntity(Integer id, boolean admin){
         this.id = id;
         this.admin = admin;
     }

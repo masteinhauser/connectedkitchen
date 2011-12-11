@@ -1,6 +1,6 @@
 package connectedkitchen.action;
 
-import connectedkitchen.persistence.entities.User;
+import connectedkitchen.persistence.entities.UserEntity;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -38,7 +38,7 @@ public class LoginAction extends _Action {
         
         
         // For now we'll simply set them as a hardcoded user.
-        User user = new User(1, true);  // UserID is 1 and they are an Admin
+        UserEntity user = new UserEntity(1, true);  // UserID is 1 and they are an Admin
         context.setUser(user);
         
         return new ForwardResolution(connectedkitchen.action.HomeAction.class, "login");

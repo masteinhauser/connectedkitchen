@@ -23,7 +23,7 @@ public class Item extends BaseEntity {
     
     @ManyToOne
     @Column(name = "user_id")
-    private User user;
+    private UserEntity user;
     
     @Column(name = "description")
     private String description;
@@ -31,7 +31,7 @@ public class Item extends BaseEntity {
     @Column(name = "min_quantity")
     private Double minQuantity;
 
-    public Item(User user, String description, Double minQuantity) {
+    public Item(UserEntity user, String description, Double minQuantity) {
         this.user = user;
         this.description = description;
         this.minQuantity = minQuantity;
@@ -69,11 +69,11 @@ public class Item extends BaseEntity {
         this.recipeItem = recipeItem;
     }
 
-    public User getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 }

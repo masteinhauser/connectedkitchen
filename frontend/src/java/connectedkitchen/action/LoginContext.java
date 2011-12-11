@@ -1,6 +1,6 @@
 package connectedkitchen.action;
 
-import connectedkitchen.persistence.entities.User;
+import connectedkitchen.persistence.entities.UserEntity;
 import net.sourceforge.stripes.action.ActionBeanContext;
 
 public class LoginContext extends ActionBeanContext{
@@ -16,16 +16,16 @@ public class LoginContext extends ActionBeanContext{
         setUser(null);
     }
 
-    public User getUser() {
-        return (User) getRequest().getSession().getAttribute("user");
+    public UserEntity getUser() {
+        return (UserEntity) getRequest().getSession().getAttribute("user");
     }
 
-    public void setUser(User user) {
+    public void setUser(UserEntity user) {
         getRequest().getSession().setAttribute("user", user);
     }
 
     public LoginType getLoginType(){
-        final User user = getUser();
+        final UserEntity user = getUser();
         if(user != null){
             if(user.isAdmin()){
                 return LoginType.ADMIN;
