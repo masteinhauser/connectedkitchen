@@ -68,4 +68,18 @@
     nbproject/build-impl.xml file. 
 
     -->
+    
+    <target name="deploy-war" description="Install web application" depends="dist">
+         <taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask"
+            classpath="${basedir}/lib/ant-depl/catalina-ant.jar"/>
+        <deploy url="http://72.9.254.61:8080/manager/text" username="connectedkitchen" password="cvtcCK"
+            path="/frontend" war="file:${basedir}/dist/frontend.war" update="true"/>
+    </target>
+
+    <target name="undeploy" description="Uninstall web application">
+         <taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask"
+            classpath="${basedir}/lib/ant-depl/catalina-ant.jar"/>
+        <undeploy url="http://72.9.254.61:8080/manager/text" username="connectedkitchen" password="cvtcCK"
+                path="/frontend"/>
+    </target>
 </project>

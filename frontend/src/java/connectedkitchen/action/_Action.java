@@ -9,15 +9,15 @@ import net.sourceforge.stripes.action.ActionBeanContext;
  */
 public class _Action implements ActionBean {
 
-    private ActionBeanContext actionBeanContext;
+    protected LoginContext context;
 
     @Override
-    public ActionBeanContext getContext() {
-        return actionBeanContext;
+    public LoginContext getContext() {
+        return context;
     }
 
     @Override
-    public void setContext(ActionBeanContext actionBeanContext) {
-        this.actionBeanContext = actionBeanContext;
+    public void setContext(ActionBeanContext context) {
+        this.context = (LoginContext) context;
     }
 }

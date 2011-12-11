@@ -18,12 +18,12 @@ h2		{text-align: center;
 
 img		{	
     text-align: center;
-    height: 600px;
-    width: 400px;
+    height: 607px;
+    width: 394px;
 }
 
 a:visited {
-    color: #EADFBF;
+    color: #CC9900;
 }
 
 a:link {
@@ -34,6 +34,7 @@ a:link {
     width: 195px;
     padding: 5px 0 10px 10px;
     margin-right: 0px;
+    margin-bottom: 7px;
     text-decoration: none;
     text-align: center;
     
@@ -68,5 +69,6 @@ table	{
 td	{
     text-align: center;
     max-width: 195px;
+    padding-top: 5px;
 }
 
