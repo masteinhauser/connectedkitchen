@@ -21,8 +21,7 @@ public abstract class BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
-    private Integer id = null;
+    protected Integer id = null;
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
-    
 }
