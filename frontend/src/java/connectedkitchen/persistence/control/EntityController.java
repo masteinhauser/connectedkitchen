@@ -1,7 +1,5 @@
 package connectedkitchen.persistence.control;
 
-import org.apache.log4j.Logger;
-
 import java.util.Map;
 import java.util.HashMap;
 import javax.persistence.EntityManager;
@@ -14,15 +12,14 @@ import javax.persistence.Query;
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
 public class EntityController {
-    private static final Logger log = Logger.getLogger(EntityController.class);
     protected static ThreadLocal<EntityManager> tlem = new ThreadLocal();
     static protected EntityManagerFactory emf;
 
     static {
         try{
-            emf = Persistence.createEntityManagerFactory("ConnectedKitchenPU", DBProps.buildPersistenceProperties());
+            emf = Persistence.createEntityManagerFactory("connectedkitchenPU", DBProps.buildPersistenceProperties());
         } catch (Exception e){
-            log.error("exception",e);
+            System.out.println("Exception: " + e);
             throw new RuntimeException(e);
         }
     }
@@ -36,7 +33,6 @@ public class EntityController {
             ret.put("hibernate.connection.password", "cvtcCK");
             ret.put("hibernate.connection.url", "jdbc:postgresql://ck.kastlersteinhauser.com/connectedkitchen");
             ret.put("hibernate.connection.driver_class", "org.postgresql.Driver");
-            ret.put("hibernate.cache.provider_class", "org.hibernate.connection.C3P0ConnectionProvider");
             ret.put("hibernate.connection.pool_size", "1");
             ret.put("hibernate.connection.provider_class", "org.hibernate.connection.C3P0ConnectionProvider");
             ret.put("hibernate.cache.use_second_level_cache", "true");
@@ -88,7 +84,7 @@ public class EntityController {
             }
             rval = (Long)(q.getSingleResult());
         } catch (Exception e){
-            log.error("exception",e);
+            System.out.println("Exception: " + e);
         }
         return rval;
     }

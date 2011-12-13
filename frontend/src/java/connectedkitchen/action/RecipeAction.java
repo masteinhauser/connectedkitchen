@@ -10,6 +10,7 @@ import net.sourceforge.stripes.action.UrlBinding;
  * @author Amanda Gilles <agilles220@gmail.com>
  */
 @UrlBinding("/recipe.action")
+@LoginRequired(type={LoginType.USER, LoginType.ADMIN})
 public class RecipeAction extends _Action {
     private static final String VIEW = "/recipe.jsp";
     private static final String SEARCH = "/recipeSearch.jsp";

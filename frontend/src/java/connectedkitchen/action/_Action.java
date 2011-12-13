@@ -10,6 +10,7 @@ import net.sourceforge.stripes.action.ActionBeanContext;
 public class _Action implements ActionBean {
 
     protected LoginContext context;
+    String message; 
 
     @Override
     public LoginContext getContext() {
@@ -19,5 +20,9 @@ public class _Action implements ActionBean {
     @Override
     public void setContext(ActionBeanContext context) {
         this.context = (LoginContext) context;
+    }
+    
+    public String getMessage(){
+        return message;
     }
 }

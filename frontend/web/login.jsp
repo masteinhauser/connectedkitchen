@@ -12,7 +12,7 @@
         </tr>
     </s:layout-component>
     <s:layout-component name="right">
-        <s:form beanclass="connectedkitchen.action.LoginAction" focus="">
+        <s:form beanclass="connectedkitchen.action.SecurityAction" focus="">
             <tr>
                 <td colspan="2">${actionBean.message}</td>
             </tr>
@@ -25,13 +25,15 @@
                 <td valign="top"><s:password name="pass" id="pass"/></td>
             </tr>
             <tr>
-                <td colspan="2" valign="top"><s:submit name="login" id="login" value="Login"/></td>
+                <td class="button" colspan="2" valign="top"><s:submit name="login" id="login" value="Login"/></td>
             </tr>
         </s:form>
-        <td rowspan="1" colspan="2" valign="bottom">
-            <s:link beanclass="connectedkitchen.action.UserAction" event="list" style="width: 394px" >New User</s:link>
-            <s:errors />
-        </td>
-    </tr>
+            <tr>
+                <td class="button" colspan="2" valign="bottom">
+                    <s:errors />
+                    <br/>
+                    <s:link beanclass="connectedkitchen.action.UserAction" event="list" style="width: 394px">New User</s:link>
+                </td>
+            </tr>
 </s:layout-component>
 </s:layout-render>

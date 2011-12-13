@@ -11,6 +11,7 @@ import net.sourceforge.stripes.action.UrlBinding;
  *         Amanda Gilles <agilles220@gmail.com>
  */
 @UrlBinding("/inventory.action")
+@LoginRequired(type={LoginType.USER, LoginType.ADMIN})
 public class InventoryAction extends _Action {
     private static final String VIEW = "/inventory.jsp";
     private static final String LIST = "/inventoryList.jsp";

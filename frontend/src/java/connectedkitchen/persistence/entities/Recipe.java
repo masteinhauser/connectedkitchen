@@ -1,33 +1,21 @@
 package connectedkitchen.persistence.entities;
 
 import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import org.hibernate.annotations.Entity;
 
 /**
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-@Entity
-public class Recipe extends BaseEntity {
+public class Recipe {
     
-    @OneToMany(mappedBy="recipe")
-    private Set<Favorite> favorites;
-    
-    @OneToMany(mappedBy="recipe")
+    private Set<FavoriteEntity> favorites;
     private Set<RecipeHistory> recipeHistory;
     
-    @ManyToOne
-    @Column(name = "recipe_item_id")
     private RecipeItem recipeItem;
-    
-    @Column(name = "description")
     private String description;
-    
-    @Column(name = "notes")
     private String notes;
+    
+    public Recipe(){}
 
     public Recipe(String description, String notes) {
         this.description = description;
@@ -42,11 +30,11 @@ public class Recipe extends BaseEntity {
         this.description = description;
     }
 
-    public Set<Favorite> getFavorites() {
+    public Set<FavoriteEntity> getFavorites() {
         return favorites;
     }
 
-    public void setFavorites(Set<Favorite> favorites) {
+    public void setFavorites(Set<FavoriteEntity> favorites) {
         this.favorites = favorites;
     }
 

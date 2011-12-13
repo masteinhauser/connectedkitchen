@@ -1,37 +1,20 @@
 package connectedkitchen.persistence.entities;
 
 import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import org.hibernate.annotations.Entity;
 
 /**
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-@Entity
-public class RecipeItem extends BaseEntity {
+public class RecipeItem {
     
-    @OneToMany(mappedBy="recipeItem")
-    @Column(name = "recipe_id")
     private Set<Recipe> recipes;
-    
-    @ManyToOne
-    @Column(name = "item_id")
-    private Item item;
-    
-    @ManyToOne
-    @Column(name = "measure_id")
+    private ItemEntity item;
     private Measure measure;
-    
-    @Column(name = "quantity")
     private Double quantity;
-    
-    @Column(name = "instruction")
     private String instruction;
 
-    public RecipeItem(Item item, Measure measure, Double quantity, String instruction) {
+    public RecipeItem(ItemEntity item, Measure measure, Double quantity, String instruction) {
         this.item = item;
         this.measure = measure;
         this.quantity = quantity;
@@ -46,11 +29,11 @@ public class RecipeItem extends BaseEntity {
         this.instruction = instruction;
     }
 
-    public Item getItem() {
+    public ItemEntity getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(ItemEntity item) {
         this.item = item;
     }
 

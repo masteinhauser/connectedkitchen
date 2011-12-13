@@ -2,28 +2,16 @@ package connectedkitchen.persistence.entities;
 
 import java.math.BigInteger;
 import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
-import org.hibernate.annotations.Entity;
 
 /**
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-@Entity
-public class Measure extends BaseEntity {
+public class Measure {
     
-    @OneToMany(mappedBy="measure")
-    @Column(name = "recipe_item_id")
     private Set<RecipeItem> recipeItems;
-    
-    @Column(name = "description")
     private String description;
-    
-    @Column(name = "milliliters")
     private BigInteger milliliters;
-    
-    @Column(name = "ounces")
     private BigInteger ounces;
 
     public Measure(String description, BigInteger milliliters, BigInteger ounces) {

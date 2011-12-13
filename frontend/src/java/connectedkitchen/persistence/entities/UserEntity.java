@@ -1,73 +1,78 @@
 package connectedkitchen.persistence.entities;
 
-import java.io.Serializable;
 import java.util.Set;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import org.hibernate.annotations.Entity;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-@Entity
-@SequenceGenerator(name="user_seq",sequenceName="user_id_seq")
-public class UserEntity extends BaseEntity implements Serializable {
-@Table(name = "users")
-@NamedQueries({
-    @NamedQuery(name = "UserEntity.getById", query = "SELECT u FROM UserEntity u WHERE u.id = :id"),
-    @NamedQuery(name = "UserEntity.updateById", query = "UPDATE UserEntity u SET u. WHERE u.id = :id")
-
-})
-public class UserEntity extends BaseEntity {
+public class UserEntity {
     
-    @OneToMany(mappedBy="user")
-    @Column(name = "favorite_id")
-    private Set<Favorite> favorites;
-    
-    @OneToMany(mappedBy="user")
-    @Column(name = "item_id")
-    private Set<Item> items;
-    
-    @OneToMany(mappedBy="user")
-    @Column(name = "recipe_history_id")
+    private Long id;
+    private Set<FavoriteEntity> favorites;
+    private Set<ItemEntity> items;
     private Set<RecipeHistory> recipeHistory;
-    
-    @OneToMany(mappedBy="user")
-    @Column(name = "user_id")
-    private Set<Inventory> inventory;
-    
-    @Column(name = "admin")
+    private Set<InventoryEntity> inventory;
+    private String emailAddress;
+    private String password;
     private boolean admin;
-    
-    @Column(name = "first_name")
     private String firstName;
-    
-    @Column(name = "last_name")
     private String lastName;
-    
-    @Column(name = "address")
     private String address;
-    
-    @Column(name = "state")
     private String state;
-    
-    @Column(name = "postal_code")
     private String postalCode;
     
     public UserEntity(){}
     
-    public UserEntity(Integer id, boolean admin){
-        this.id = id;
+    public UserEntity(UserEntity userEntity){
+        this.emailAddress = userEntity.getEmailAddress();
+        this.password = userEntity.getPassword();
+        this.admin = userEntity.isAdmin();
+        this.firstName = userEntity.getFirstName();
+        this.lastName = userEntity.getLastName();
+        this.address = userEntity.getAddress();
+        this.state = userEntity.getState();
+        this.postalCode = userEntity.getPostalCode();
+    }
+    
+    public UserEntity(String emailAddress, String password) {
+        this.emailAddress = emailAddress;
+        this.password = password;
+    }
+
+    public UserEntity(String emailAddress, String password, boolean admin, String firstName, String lastName, String address, String state, String postalCode) {
+        this.emailAddress = emailAddress;
+        this.password = password;
         this.admin = admin;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.state = state;
+        this.postalCode = postalCode;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAddress() {
@@ -86,40 +91,40 @@ public class UserEntity extends BaseEntity {
         this.admin = admin;
     }
 
-    public Set<Favorite> getFavorites() {
+    public Set<FavoriteEntity> getFavorites() {
         return favorites;
     }
 
-    public void setFavorites(Set<Favorite> favorites) {
+    public void setFavorites(Set<FavoriteEntity> favorites) {
         this.favorites = favorites;
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstName == null ? "" : firstName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public Set<Inventory> getInventory() {
+    public Set<InventoryEntity> getInventory() {
         return inventory;
     }
 
-    public void setInventory(Set<Inventory> inventory) {
+    public void setInventory(Set<InventoryEntity> inventory) {
         this.inventory = inventory;
     }
 
-    public Set<Item> getItems() {
+    public Set<ItemEntity> getItems() {
         return items;
     }
 
-    public void setItems(Set<Item> items) {
+    public void setItems(Set<ItemEntity> items) {
         this.items = items;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastName == null ? "" : lastName;
     }
 
     public void setLastName(String lastName) {

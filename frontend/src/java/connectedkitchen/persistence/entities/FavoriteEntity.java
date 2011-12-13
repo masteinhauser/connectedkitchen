@@ -1,24 +1,15 @@
 package connectedkitchen.persistence.entities;
 
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import org.hibernate.annotations.Entity;
-
 /**
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-@Entity
-public class Favorite extends BaseEntity {
-    @ManyToOne
-    @Column(name = "recipe_id")
+public class FavoriteEntity {
+
     private Recipe recipe;
-    
-    @ManyToOne
-    @Column(name = "user_id")
     private UserEntity user;
 
-    public Favorite(Recipe recipe, UserEntity user) {
+    public FavoriteEntity(Recipe recipe, UserEntity user) {
         this.recipe = recipe;
         this.user = user;
     }
