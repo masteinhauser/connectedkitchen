@@ -13,8 +13,8 @@ import net.sourceforge.stripes.validation.ValidationErrors;
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-@UrlBinding("/login.action")
-public class LoginAction extends _Action {
+@UrlBinding("/security.action")
+public class SecurityAction extends _Action {
     private static final String VIEW = "/home.jsp";
 
     private String email, pass;
@@ -34,15 +34,31 @@ public class LoginAction extends _Action {
             return getContext().getSourcePageResolution();
         }
         
-        // Need to add username and password verification. 
+        // Look up the user in the current user list.
+        UserEntity user = new User().getUser(email, pass);
         
-        // For now we'll simply set them as a hardcoded user.
-        UserEntity userEntity = new UserEntity();
-        userEntity = new User().getUser(email, pass);
-        context.setUser(userEntity);
-        
+        // If the user is not found, redirect back to the page they came from with an error response.
+        if(user.getId() == null){
+            ValidationErrors errors = new ValidationErrors();
+            errors.add( "authentication", new SimpleError("Invalid email or password.") );
+            getContext().setValidationErrors(errors);
+            
+            return getContext().getSourcePageResolution();
+        }
+            
+        // Set the user to the session for easy retrieval.
+        // NOTE: This would be a HUGE security flaw.
+        context.setUser(user);
+
         // User has been logged in, forward them to userHome
         return new ForwardResolution(connectedkitchen.action.HomeAction.class, "login");
+    }
+    
+    public Resolution logout(){
+        context.clearSession();
+        message = "You have been logged out.";
+        
+        return new ForwardResolution(VIEW);
     }
 
     public String getEmail() {

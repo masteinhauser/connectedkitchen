@@ -8,6 +8,7 @@ import java.util.Set;
  */
 public class UserEntity {
     
+    private Long id;
     private Set<FavoriteEntity> favorites;
     private Set<ItemEntity> items;
     private Set<RecipeHistory> recipeHistory;
@@ -48,6 +49,14 @@ public class UserEntity {
         this.address = address;
         this.state = state;
         this.postalCode = postalCode;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmailAddress() {

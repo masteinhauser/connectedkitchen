@@ -17,10 +17,10 @@
         </td>
     </tr>
     <tr>
-        <td colspan="2"><s:link beanclass="connectedkitchen.action.RecipeAction" event="search" style="width: 394px">Search</s:link></td>
+        <td class="button" colspan="2"><s:link beanclass="connectedkitchen.action.RecipeAction" event="search" style="width: 394px">Search</s:link></td>
     </tr>
     <tr>
-        <td><s:link beanclass="connectedkitchen.action.RecipeAction" event="add">Add</s:link></td>
-        <td><s:link beanclass="connectedkitchen.action.RecipeAction" event="edit">Edit</s:link></td>
+        <td class="button" valign="bottom"><s:link beanclass="connectedkitchen.action.RecipeAction" event="add">Add</s:link></td>
+        <td class="button" valign="bottom"><s:link beanclass="connectedkitchen.action.RecipeAction" event="edit">Edit</s:link></td>
     </tr>
 </s:layout-definition>

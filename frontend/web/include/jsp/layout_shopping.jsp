@@ -12,15 +12,15 @@
         <td colspan="2"><span class="page">${page} Page</span></td>
     </tr>
     <tr>
-        <td colspan="2"><s:link beanclass="connectedkitchen.action.ShoppingAction" event="list" style="width: 394px">List</s:link></td>
-    </tr>
-    <tr>
-        <td valign="top"><s:link beanclass="connectedkitchen.action.ShoppingAction" event="add">Add</s:link></td>
-        <td valign="top"><s:link beanclass="connectedkitchen.action.ShoppingAction" event="edit">Edit</s:link></td>
-    </tr>
-    <tr>
-        <td colspan="2">
+        <td colspan="2" height="450">
             <s:layout-component name="content"/>
         </td>
+    </tr>
+    <tr>
+        <td class="button" colspan="2"><s:link beanclass="connectedkitchen.action.ShoppingAction" event="list" style="width: 394px">List</s:link></td>
+    </tr>
+    <tr>
+        <td class="button" valign="bottom"><s:link beanclass="connectedkitchen.action.ShoppingAction" event="add">Add</s:link></td>
+        <td class="button" valign="bottom"><s:link beanclass="connectedkitchen.action.ShoppingAction" event="edit">Edit</s:link></td>
     </tr>
 </s:layout-definition>

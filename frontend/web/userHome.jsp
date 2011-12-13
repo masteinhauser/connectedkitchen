@@ -19,8 +19,7 @@
     </s:layout-component>
     <s:layout-component name="right">
         <tr>
-            <td colspan="2" valign="top">${actionBean.message}</td>
-            <td><s:errors /></td>
+            <td colspan="2" rowspan="6" valign="top">${actionBean.message}</td>
         </tr>
     </s:layout-component>
 </s:layout-render>

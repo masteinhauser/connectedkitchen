@@ -10,6 +10,7 @@ import net.sourceforge.stripes.action.UrlBinding;
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
 @UrlBinding("/shopping.action")
+@LoginRequired(type={LoginType.USER, LoginType.ADMIN})
 public class ShoppingAction extends _Action {
 
     private static final String VIEW = "/shopping.jsp";

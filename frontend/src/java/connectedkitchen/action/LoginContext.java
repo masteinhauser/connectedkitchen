@@ -4,6 +4,7 @@ import connectedkitchen.persistence.entities.UserEntity;
 import net.sourceforge.stripes.action.ActionBeanContext;
 
 public class LoginContext extends ActionBeanContext{
+  
     public void clearSession(){
         try{
             getRequest().getSession().invalidate();

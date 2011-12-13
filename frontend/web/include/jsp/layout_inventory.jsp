@@ -17,10 +17,10 @@
         </td>
     </tr>
     <tr>
-        <td colspan="2"><s:link beanclass="connectedkitchen.action.InventoryAction" event="list" style="width: 394px">List</s:link></td>
+        <td  class="button" colspan="2"><s:link beanclass="connectedkitchen.action.InventoryAction" event="list" style="width: 394px">List</s:link></td>
     </tr>
     <tr>
-        <td><s:link beanclass="connectedkitchen.action.InventoryAction" event="add">Add</s:link></td>
-        <td><s:link beanclass="connectedkitchen.action.InventoryAction" event="edit">Edit</s:link></td>
+        <td class="button" valign="bottom"><s:link beanclass="connectedkitchen.action.InventoryAction" event="add">Add</s:link></td>
+        <td class="button" valign="bottom"><s:link beanclass="connectedkitchen.action.InventoryAction" event="edit">Edit</s:link></td>
     </tr>
 </s:layout-definition>
