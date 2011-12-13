@@ -1,5 +1,6 @@
 package connectedkitchen.action;
 
+import connectedkitchen.model.User;
 import connectedkitchen.persistence.entities.UserEntity;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
@@ -14,7 +15,7 @@ import net.sourceforge.stripes.validation.ValidationErrors;
  */
 @UrlBinding("/login.action")
 public class LoginAction extends _Action {
-    private static final String VIEW = "/login.jsp";
+    private static final String VIEW = "/home.jsp";
 
     private String email, pass;
     
@@ -32,15 +33,15 @@ public class LoginAction extends _Action {
             
             return getContext().getSourcePageResolution();
         }
-       
         
         // Need to add username and password verification. 
         
-        
         // For now we'll simply set them as a hardcoded user.
-        UserEntity user = new UserEntity(1, true);  // UserID is 1 and they are an Admin
-        context.setUser(user);
+        UserEntity userEntity = new UserEntity();
+        userEntity = new User().getUser(email, pass);
+        context.setUser(userEntity);
         
+        // User has been logged in, forward them to userHome
         return new ForwardResolution(connectedkitchen.action.HomeAction.class, "login");
     }
 

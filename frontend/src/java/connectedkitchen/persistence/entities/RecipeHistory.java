@@ -1,21 +1,11 @@
 package connectedkitchen.persistence.entities;
 
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import org.hibernate.annotations.Entity;
-
 /**
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-@Entity
-public class RecipeHistory extends BaseEntity {
-    @ManyToOne
-    @Column(name = "recipe_id")
+public class RecipeHistory {
     private Recipe recipe;
-    
-    @ManyToOne
-    @Column(name = "user_id")
     private UserEntity user;
 
     public Recipe getRecipe() {

@@ -2,35 +2,21 @@ package connectedkitchen.persistence.entities;
 
 import java.math.BigInteger;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import org.hibernate.annotations.Entity;
 
 /**
  *
  * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
  */
-@Entity
-public class Inventory extends BaseEntity {
+public class InventoryEntity {
     
-    @ManyToOne
-    @Column(name = "item_id")
-    private Item item;
-    
-    @ManyToOne
-    @Column(name = "user_id")
+
+    private ItemEntity item;
     private UserEntity user;
-    
-    @Column(name = "quantity")
     private Double quantity;
-    
-    @Column(name = "expiration")
     private Date expiration;
-    
-    @Column(name = "cost")
     private BigInteger cost;
 
-    public Inventory(Item item, UserEntity user, Double quantity, Date expiration, BigInteger cost) {
+    public InventoryEntity(ItemEntity item, UserEntity user, Double quantity, Date expiration, BigInteger cost) {
         this.item = item;
         this.user = user;
         this.quantity = quantity;
@@ -54,11 +40,11 @@ public class Inventory extends BaseEntity {
         this.expiration = expiration;
     }
 
-    public Item getItem() {
+    public ItemEntity getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(ItemEntity item) {
         this.item = item;
     }
 
