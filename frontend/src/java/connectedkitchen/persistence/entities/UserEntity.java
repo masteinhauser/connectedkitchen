@@ -100,7 +100,7 @@ public class UserEntity {
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstName == null ? "" : firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -124,7 +124,7 @@ public class UserEntity {
     }
 
     public String getLastName() {
-        return lastName;
+        return lastName == null ? "" : lastName;
     }
 
     public void setLastName(String lastName) {

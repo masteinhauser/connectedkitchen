@@ -1,6 +1,7 @@
 package connectedkitchen.action;
 
 import connectedkitchen.model.User;
+import connectedkitchen.persistence.entities.UserEntity;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -10,32 +11,68 @@ import net.sourceforge.stripes.action.UrlBinding;
 public class UserAction extends _Action {
     private static final String FORM = "/userForm.jsp";
     
-    private String action;
+    private String action, type;
     private String emailAddress, password, firstName, lastName;
   
     @DefaultHandler
     public Resolution view() {
-        action = "New";
+        UserEntity user = context.getUser();
+        type = "register";
+        if(user != null){
+            firstName = user.getFirstName();
+            lastName = user.getLastName();
+            emailAddress = user.getEmailAddress();
+            type = "edit";
+        }
         return new ForwardResolution(FORM);
     }
     
-    public Resolution register() {
-        User user = new User(emailAddress, password);
+    public Resolution edit() {
+        // Get instance of the Singleton
+        User user = User.getInstance();
+        // Create the user
+        UserEntity ue = new UserEntity(emailAddress, password);
         
         // Set extra information.
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setAdmin(false);
+        ue.setFirstName(firstName);
+        ue.setLastName(lastName);
+        ue.setAdmin(false);
+        
+        // Save the information we just added.
+        user.saveUser(ue);
         
         // Set the user to the session for easy retrieval.
-        // NOTE: This would be a HUGE security flaw.
-        context.setUser(user);
+        context.setUser(ue);
+        
+        return new ForwardResolution(connectedkitchen.action.HomeAction.class, "edit");
+    }
+    
+    public Resolution register() {
+        // Get instance of the Singleton
+        User user = User.getInstance();
+        // Create the user
+        UserEntity ue = new UserEntity(emailAddress, password);
+        
+        // Set extra information.
+        ue.setFirstName(firstName);
+        ue.setLastName(lastName);
+        ue.setAdmin(false);
+        
+        // Save the information we just added.
+        user.saveUser(ue);
+        
+        // Set the user to the session for easy retrieval.
+        context.setUser(ue);
         
         return new ForwardResolution(connectedkitchen.action.HomeAction.class, "register");
     }
     
     public String getAction(){
         return action;
+    }
+    
+    public String getType(){
+        return type;
     }
     
     public String getEmailAddress() {
@@ -55,18 +92,18 @@ public class UserAction extends _Action {
     }
     
     public String getFirstName() {
-        return(firstName);
+        return firstName;
     }
 
-    public void setFirstName(String newFirstName) {
-        firstName = newFirstName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName == null ? "Unknown" : firstName;
     }
 
     public String getLastName() {
-        return(lastName);
+        return lastName ;
     }
 
-    public void setLastName(String newLastName) {
-        lastName = newLastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName == null ? "Unknown" : lastName;
     }
 }

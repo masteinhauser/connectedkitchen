@@ -17,23 +17,23 @@
                 <table cols="2" rows="5">
                 <s:form beanclass="connectedkitchen.action.UserAction" focus="">
                     <tr>
-                        <td><label for="fname">First Name</label></td>
-                        <td><s:text name="fname" id="fname"/></td>
+                        <td><label for="firstName">First Name</label></td>
+                        <td><s:text name="firstName" id="firstName" value="${actionBean.firstName}"/></td>
                     </tr>
                     <tr>
-                        <td><label for="lname">Last Name</label></td>
-                        <td><s:text name="lname" id="lname"/></td>
+                        <td><label for="lastName">Last Name</label></td>
+                        <td><s:text name="lastName" id="lastName" value="${actionBean.lastName}"/></td>
                     </tr>
                     <tr>
-                        <td><label for="email">Email Address</label></td>
-                        <td><s:text name="email" id="email"/></td>
+                        <td><label for="emailAddress">Email Address</label></td>
+                        <td><s:text name="emailAddress" id="emailAddress" value="${actionBean.emailAddress}"/></td>
                     </tr>
                     <tr>
-                        <td><label for="pass">Password</label></td>
-                        <td><s:password name="pass" id="pass"/></td>
+                        <td><label for="password">Password</label></td>
+                        <td><s:password name="password" id="password"/></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><s:submit name="register" id="register" value="Register"/></td>
+                        <td colspan="2"><s:submit name="${actionBean.type}" id="submit" value="${actionBean.type}" style="text-transform:capitalize" /></td>
                     </tr>
                 </s:form>
                 </table>

@@ -21,7 +21,7 @@
                     <tr>
                         <c:choose>
                             <c:when test="${actionBean.context.loginType != \"GUEST\"}">
-                                <td colspan="2" align="left" style="text-align: left">Hello, ${actionBean.context.user.emailAddress}</td>
+                                <td colspan="2" align="left" style="text-align: left">Hello, <s:link beanclass="connectedkitchen.action.UserAction">${actionBean.context.user.firstName}</s:link></td>
                                 <td colspan="2" align="right" style="text-align: right"><s:link beanclass="connectedkitchen.action.SecurityAction" event="logout">Logout</s:link></td>
                             </c:when>
                             <c:otherwise>

@@ -15,7 +15,7 @@ import net.sourceforge.stripes.validation.ValidationErrors;
  */
 @UrlBinding("/security.action")
 public class SecurityAction extends _Action {
-    private static final String VIEW = "/home.jsp";
+    private static final String VIEW = "/login.jsp";
 
     private String email, pass;
     
@@ -35,7 +35,7 @@ public class SecurityAction extends _Action {
         }
         
         // Look up the user in the current user list.
-        UserEntity user = new User().getUser(email, pass);
+        UserEntity user = User.getInstance().getUser(email, pass);
         
         // If the user is not found, redirect back to the page they came from with an error response.
         if(user.getId() == null){
