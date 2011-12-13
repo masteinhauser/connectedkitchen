@@ -14,7 +14,6 @@
     <tr>
         <td colspan="2" height="450">
             <s:layout-component name="content"/>
-        </td>
     </tr>
     <tr>
         <td colspan="2"><s:link beanclass="connectedkitchen.action.InventoryAction" event="list" style="width: 394px">List</s:link></td>

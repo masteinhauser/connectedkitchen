@@ -72,3 +72,27 @@ td	{
     padding-top: 5px;
 }
 
+label {
+    float: right;
+    padding-right: 5px;
+    vertical-align: bottom;
+}
+
+input:submit {
+    float: center;
+}
+
+input {
+    float: left;
+    width: 15em;
+    padding-top: 5px;
+}
+
+select {
+    float: left;
+    width: 15em;
+    padding-top: 5px;
+}
+
+
+

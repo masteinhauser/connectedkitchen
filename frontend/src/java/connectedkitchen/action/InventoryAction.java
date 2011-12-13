@@ -37,12 +37,12 @@ public class InventoryAction extends _Action {
         action = "Edit";
         content = "This is where the user can edit existing inventory items ("
                 + "adjust quantities, last cost, description, etc).";
-        return new ForwardResolution(FORM);
+        return new ForwardResolution(LIST);
     }
     
     public Resolution add() {
         action = "Add";
-        content = "This is where the user can enter new inventory items.";
+        content = "This is where the user can add inventory items"; 
         return new ForwardResolution(FORM);
     }
     
