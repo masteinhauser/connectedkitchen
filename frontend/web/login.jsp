@@ -8,7 +8,7 @@
 <s:layout-render name="/include/jsp/layout_main.jsp" title="Connected Kitchen">
     <s:layout-component name="left">
         <tr>
-            <td colspan="2" rowspan="6"><img src="<c:url value='/include/img/white.jpg'/>" /></td>
+            <td colspan="2" rowspan="6"><img src="<c:url value='/include/img/white.png'/>" /></td>
         </tr>
     </s:layout-component>
     <s:layout-component name="right">
