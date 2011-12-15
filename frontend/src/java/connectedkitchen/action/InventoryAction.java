@@ -17,8 +17,8 @@ public class InventoryAction extends _Action {
     private static final String LIST = "/inventoryList.jsp";
     private static final String FORM = "/inventoryForm.jsp";
     
-    private String action = "";
-    private String content = "";
+    private String action, content, type;
+    private String description, quantity, unitOfMeasure, expires, stockFlag;
     
     @DefaultHandler
     public Resolution view() {
@@ -43,6 +43,7 @@ public class InventoryAction extends _Action {
     
     public Resolution add() {
         action = "Add";
+        type = "Save";
         content = "This is where the user can add inventory items"; 
         return new ForwardResolution(FORM);
     }

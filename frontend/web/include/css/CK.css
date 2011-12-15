@@ -78,10 +78,6 @@ label {
     vertical-align: bottom;
 }
 
-input:submit {
-    float: center;
-}
-
 input {
     float: left;
     width: 15em;
@@ -89,10 +85,11 @@ input {
 }
 
 select {
-    float: left;
+    float: inherit;
     width: 15em;
     padding-top: 5px;
 }
+
 
 
 

@@ -39,7 +39,7 @@ public class ShoppingAction extends _Action {
     
     public Resolution edit(){
         action = "Edit";
-        content = "This is when we pull data from the database and they can EDIT recipe list! WOOOO!!!";
+        content = "This is when we pull data from the database and they can edit the list! WOOOO!!!";
         return new ForwardResolution(FORM);
     }
     

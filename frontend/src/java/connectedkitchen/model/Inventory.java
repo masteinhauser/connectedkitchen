@@ -2,7 +2,7 @@ package connectedkitchen.model;
 
 /**
  *
- * @author Myles A. K. Steinhauser <myles.steinhauser@gmail.com>
+ * @author Amanda Gilles <agilles220@gmail.com>
  */
 public class Inventory {
     

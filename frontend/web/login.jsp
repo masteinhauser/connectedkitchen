@@ -25,7 +25,8 @@
                 <td valign="top"><s:password name="pass" id="pass"/></td>
             </tr>
             <tr>
-                <td class="button" colspan="2" valign="top"><s:submit name="login" id="login" value="Login"/></td>
+                <td></td>
+                <td class="button" valign="top"><s:submit name="login" id="login" value="Login"/></td>
             </tr>
         </s:form>
             <tr>
